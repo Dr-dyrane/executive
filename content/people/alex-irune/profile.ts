@@ -14,6 +14,70 @@ export const alexIrune = {
     ["Strategy", "taught scale."],
     ["Operations", "taught execution."],
   ],
+  facts: [
+    {
+      label: "Education",
+      value: "BSc + PhD · Computer Science",
+      detail: "University of Nottingham",
+      href: "https://www.oandoenergyresources.com/about-us/ainojie-irune-managing-director",
+    },
+    {
+      label: "Oando tenure",
+      value: "Since 2011",
+      detail: "Communications → strategy → upstream → board",
+      href: "https://investors.oandoplc.com/news/news-details/2019/Notification-of-appointment-and-resignation-of-directors-08-09-2019/default.aspx",
+    },
+    {
+      label: "Operating footprint",
+      value: "Nigeria · São Tomé · Angola",
+      detail: "Current and recent public OER footprint",
+      href: "https://theenergyyear.com/articles/driving-production-growth-through-indigenous-control/",
+    },
+    {
+      label: "Public leadership thesis",
+      value: "Execution + indigenous control",
+      detail: "Production growth, cost discipline, governance and capital",
+      href: "https://theenergyyear.com/articles/driving-production-growth-through-indigenous-control/",
+    },
+  ],
+  career: [
+    {
+      period: "2002–2009",
+      title: "Computer science · University of Nottingham",
+      body: "BSc and PhD in Computer Science. The technical origin is central to the later systems, optimisation and transformation story.",
+      href: "https://www.oandoenergyresources.com/about-us/ainojie-irune-managing-director",
+    },
+    {
+      period: "Pre-2011",
+      title: "In-vehicle systems · United Kingdom",
+      body: "Public corporate biographies connect his pre-Oando work with Nissan, Honda and Jaguar Land Rover.",
+      href: "https://www.oandotrading.com/wp-content/uploads/2020/03/Oando-Corporate-Profile_H1-20194.pdf",
+    },
+    {
+      period: "2011–2016",
+      title: "Oando · communications and corporate narrative",
+      body: "Joined Oando in 2011 and later led corporate communications during the ConocoPhillips acquisition era.",
+      href: "https://www.oandoplc.com/press-release/oando-plc-signs-agreement-to-acquire-conocophillips-nigerian-affiliate",
+    },
+    {
+      period: "2016–2018",
+      title: "Strategy and corporate services",
+      body: "Moved into group strategy and corporate services, including restructuring, capital and portfolio initiatives.",
+      href: "https://aecweek.com/speakers/dr-ainojie-alex-irune",
+    },
+    {
+      period: "2018–2019",
+      title: "OER · operating leadership",
+      body: "Transitioned from strategy into upstream operating leadership, with public biographies crediting JV improvement, production and financing work.",
+      href: "https://umugini.com/dr-ainojie-irune/",
+    },
+    {
+      period: "2019–present",
+      title: "Board + operatorship",
+      body: "Appointed Executive Director of Oando PLC in 2019 and now publicly positioned around operatorship, indigenous scale and execution.",
+      href: "https://investors.oandoplc.com/news/news-details/2019/Notification-of-appointment-and-resignation-of-directors-08-09-2019/default.aspx",
+    },
+  ],
   heroImage: {
     src: "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/d7900c8f-e6f7-492a-8743-ea5c4d5087c0/Alex-MD.png",
     alt: "Dr. Ainojie Alex Irune",
@@ -35,22 +99,25 @@ export const alexIrune = {
   },
   social: [
     {
+      label: "Instagram",
+      handle: "@alexirune",
+      href: "https://www.instagram.com/alexirune?igsh=NDd4aG9qNTNlbjY=",
+      note: "Direct public profile link supplied for this dossier. Use this as the primary Instagram route; post-level content is not inferred when Instagram blocks indexing.",
+      emphasis: "primary",
+    },
+    {
       label: "LinkedIn",
       handle: "Ainojie Alex Irune (PhD)",
       href: "https://ng.linkedin.com/in/ainojie-alex-irune",
-      note: "Most active public professional channel and best route for context-rich outreach.",
-    },
-    {
-      label: "Instagram",
-      handle: "@ainojiealexirune",
-      href: "https://www.instagram.com/ainojiealexirune/",
-      note: "Public social profile; verify current availability before publishing as an official channel.",
+      note: "Strongest indexed professional channel for current thought leadership, articles, event context and professional outreach.",
+      emphasis: "professional",
     },
     {
       label: "Oando",
       handle: "Corporate media & contact",
       href: "https://www.oandoplc.com/contact-us",
-      note: "Official corporate route for formal enquiries, media and institutional contact.",
+      note: "Official corporate route for formal enquiries, media, institutional contact and verification.",
+      emphasis: "official",
     },
   ],
   publicSchedule: [
@@ -85,6 +152,13 @@ export const alexIrune = {
       action: "Open LinkedIn",
     },
     {
+      label: "Social / public",
+      title: "Instagram · @alexirune",
+      body: "Use the supplied public Instagram profile for social context and public-facing interaction without inferring private routines, locations or off-calendar activity.",
+      href: "https://www.instagram.com/alexirune?igsh=NDd4aG9qNTNlbjY=",
+      action: "Open Instagram",
+    },
+    {
       label: "Public-event route",
       title: "Meet where participation is confirmed",
       body: "Conference appearances provide the cleanest legitimate path to introductions through organisers, speaker lounges, panels and official networking programmes.",
@@ -100,16 +174,22 @@ export const alexIrune = {
       href: "https://www.oandoplc.com/press-release/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us-1-5-billion",
     },
     {
+      name: "ExxonMobil",
+      role: "Historical OML 145 operator / partner context",
+      body: "The transaction record identified ExxonMobil as operator with a 20% interest alongside the other co-venturers. This is part of the asset-level relationship graph around Oando’s acquired interest.",
+      href: "https://www.prnewswire.com/news-releases/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us15-billion-269216491.html",
+    },
+    {
+      name: "Svenska · NPDC · Sasol",
+      role: "Historical OML 145 partner ecosystem",
+      body: "These entities complete the published partner structure around the asset and provide a more accurate stakeholder map than treating Chevron as an isolated personal connection.",
+      href: "https://www.prnewswire.com/news-releases/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us15-billion-269216491.html",
+    },
+    {
       name: "Chevron Nigeria supplier / corporate interface",
       role: "Official Chevron business route",
       body: "For legitimate business outreach, use Chevron Nigeria Limited’s published corporate or supplier channels rather than attempting to infer or target private personnel.",
       href: "https://vis-nma.azure.chevron.com/Supplier/Index",
-    },
-    {
-      name: "OML 145 partner ecosystem",
-      role: "Asset-level stakeholder context",
-      body: "The relevant relationship is asset and institution based. The historical published structure links Oando with Chevron and other co-venturers; it does not establish a personal relationship between Irune and individual Chevron executives.",
-      href: "https://www.prnewswire.com/news-releases/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us15-billion-269216491.html",
     },
   ],
   signals: [
@@ -119,6 +199,13 @@ export const alexIrune = {
       title: "2026 is an execution year.",
       body: "Irune frames the year around driving costs down, production up, and strengthening people, systems and governance as indigenous operators take on larger assets.",
       href: "https://theenergyyear.com/articles/driving-production-growth-through-indigenous-control/",
+    },
+    {
+      date: "04 Mar 2025",
+      label: "S&P Global",
+      title: "Nigerian producers have come of age.",
+      body: "In a Platts interview, Irune argued that indigenous producers are increasingly capable of operating major assets efficiently and safely as IOC divestments reshape the sector.",
+      href: "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/030425-interview-nigerian-producers-have-come-of-age-with-ioc-asset-purchases-oando",
     },
     {
       date: "02–05 Feb 2026",
@@ -185,10 +272,12 @@ export const alexIrune = {
     ["OER official biography", "Role · education · operational scope", "https://www.oandoenergyresources.com/about-us/ainojie-irune-managing-director"],
     ["OER contact", "Official Lagos office · email · phone", "https://www.oandoenergyresources.com/contact-us/"],
     ["The Energy Year · Jan 2026", "Operatorship · execution · regional ambition", "https://theenergyyear.com/articles/driving-production-growth-through-indigenous-control/"],
+    ["S&P Global · Mar 2025", "IOC divestments · indigenous producers · Africa expansion", "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/030425-interview-nigerian-producers-have-come-of-age-with-ioc-asset-purchases-oando"],
     ["Oando · NIES 2026", "Capital discipline · collaboration · governance", "https://www.oandoplc.com/media-releases/oando-links-collaborative-upstream-leadership-with-capital-discipline-at-nies-2026"],
     ["Oando · CIoD 2026", "Board leadership · diversity · resilience", "https://www.oandoplc.com/media-releases/oando-executives-advocate-intentional-pathways-to-womens-leadership-as-a-business-imperative"],
     ["NOG Energy Week 2026", "Speaker profile · Abuja", "https://www.nogenergyweek.com/speaker-collection/2026-exco/dr-ainojie-alex-irune/"],
     ["African Energy Week 2026", "Confirmed speaker profile", "https://aecweek.com/speakers/dr-ainojie-alex-irune"],
     ["Oando / OML 145", "Historical Chevron co-venture context", "https://www.oandoplc.com/press-release/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us-1-5-billion"],
+    ["Instagram · @alexirune", "Direct public profile link supplied for this dossier", "https://www.instagram.com/alexirune?igsh=NDd4aG9qNTNlbjY="],
   ],
 } as const;
