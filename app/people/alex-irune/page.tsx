@@ -11,6 +11,7 @@ export default function AlexIrunePage() {
           <nav className="nav" aria-label="Profile navigation">
             <a href="#story">Story</a>
             <a href="#now">Now</a>
+            <a href="#access">Access</a>
             <a href="#network">Network</a>
             <a href="#sources">Sources</a>
           </nav>
@@ -87,6 +88,77 @@ export default function AlexIrunePage() {
         </div>
       </section>
 
+      <section className="chapter shell" id="access">
+        <div className="chapter-head">
+          <div className="eyebrow">Public access</div>
+          <div>
+            <h2>Reach the institution. Meet in public.</h2>
+            <p className="intro">Fast, legitimate routes to contact and public appearances — without turning an executive profile into a private-location tracker.</p>
+          </div>
+        </div>
+
+        <div className="contact-stage">
+          <div className="contact-primary">
+            <div className="eyebrow">Oando Energy Resources</div>
+            <a className="contact-email" href={`mailto:${profile.contact.officialEmail}`}>{profile.contact.officialEmail}</a>
+            <a className="contact-phone" href={`tel:${profile.contact.officialPhone.replace(/[^+\d]/g, "")}`}>{profile.contact.officialPhone}</a>
+            <p>{profile.contact.office}</p>
+            <div className="contact-actions">
+              <a href={`mailto:${profile.contact.officialEmail}`}>Write ↗</a>
+              <a href={profile.contact.officialContactHref} target="_blank" rel="noreferrer">Official contact page ↗</a>
+            </div>
+            <small>{profile.contact.note}</small>
+          </div>
+
+          <div className="schedule-rail">
+            <div className="eyebrow">Public calendar</div>
+            {profile.publicSchedule.map((item) => (
+              <a className="schedule-item" href={item.href} target="_blank" rel="noreferrer" key={`${item.date}-${item.event}`}>
+                <div className="schedule-date">{item.date}</div>
+                <div>
+                  <h3>{item.event}</h3>
+                  <p>{item.location}</p>
+                </div>
+                <span>{item.status} ↗</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="access-grid">
+          {profile.accessRoutes.map((route) => (
+            <a className="access-route" href={route.href} target={route.href.startsWith("http") ? "_blank" : undefined} rel={route.href.startsWith("http") ? "noreferrer" : undefined} key={route.title}>
+              <div className="eyebrow">{route.label}</div>
+              <h3>{route.title}</h3>
+              <p>{route.body}</p>
+              <span>{route.action} ↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="chapter shell">
+        <div className="chapter-head">
+          <div className="eyebrow">Social signal</div>
+          <div>
+            <h2>Follow the public voice.</h2>
+            <p className="intro">Social links are treated as context and legitimate outreach surfaces — not as a basis for inferring private hangouts, evening routines or off-calendar movements.</p>
+          </div>
+        </div>
+        <div className="social-list">
+          {profile.social.map((account) => (
+            <a href={account.href} target="_blank" rel="noreferrer" className="social-row" key={account.label}>
+              <div className="social-label">{account.label}</div>
+              <div>
+                <h3>{account.handle}</h3>
+                <p>{account.note}</p>
+              </div>
+              <span>↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="chapter shell" id="network">
         <div className="chapter-head">
           <div className="eyebrow">Relationship intelligence</div>
@@ -103,6 +175,29 @@ export default function AlexIrunePage() {
               <p>{relationship.body}</p>
               <a href={relationship.href} target="_blank" rel="noreferrer">Evidence ↗</a>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="chapter shell">
+        <div className="chapter-head">
+          <div className="eyebrow">Chevron / stakeholder route</div>
+          <div>
+            <h2>Asset relationship first.</h2>
+            <p className="intro">The useful Chevron connection is the documented OML 145 co-venture and the official corporate interfaces around it — not private personnel targeting.</p>
+          </div>
+        </div>
+        <div className="stakeholder-stack">
+          {profile.chevronNetwork.map((stakeholder, index) => (
+            <a className="stakeholder-row" href={stakeholder.href} target="_blank" rel="noreferrer" key={stakeholder.name}>
+              <div className="stakeholder-index">0{index + 1}</div>
+              <div>
+                <div className="eyebrow">{stakeholder.role}</div>
+                <h3>{stakeholder.name}</h3>
+                <p>{stakeholder.body}</p>
+              </div>
+              <span>Evidence ↗</span>
+            </a>
           ))}
         </div>
       </section>
@@ -126,7 +221,7 @@ export default function AlexIrunePage() {
       </section>
 
       <footer className="footer shell">
-        DYRANE / Executive Intelligence Profile 001 — public-source research draft. Image and publication rights remain with their respective rights holders. Private relationships, private contact data, non-public locations and private schedule inference are excluded.
+        DYRANE / Executive Intelligence Profile 001 — public-source research draft. Image and publication rights remain with their respective rights holders. Personal email, private phone numbers, private relationships, favourite hangouts, private locations and non-public schedule inference are intentionally excluded.
       </footer>
     </main>
   );
