@@ -10,6 +10,7 @@ export default function AlexIrunePage() {
           <div className="brand">DYRANE / EIP–001</div>
           <nav className="nav" aria-label="Profile navigation">
             <a href="#story">Story</a>
+            <a href="#career">Career</a>
             <a href="#now">Now</a>
             <a href="#access">Access</a>
             <a href="#network">Network</a>
@@ -50,6 +51,16 @@ export default function AlexIrunePage() {
         </div>
       </section>
 
+      <section className="fact-strip shell" aria-label="Executive profile facts">
+        {profile.facts.map((fact) => (
+          <a className="fact" href={fact.href} target="_blank" rel="noreferrer" key={fact.label}>
+            <div className="eyebrow">{fact.label}</div>
+            <strong>{fact.value}</strong>
+            <span>{fact.detail}</span>
+          </a>
+        ))}
+      </section>
+
       <section className="chapter shell">
         <div className="story-grid">
           <a className="visual" href={profile.featuredVisual.source} target="_blank" rel="noreferrer">
@@ -66,6 +77,29 @@ export default function AlexIrunePage() {
         </div>
       </section>
 
+      <section className="chapter shell" id="career">
+        <div className="chapter-head">
+          <div className="eyebrow">Career architecture</div>
+          <div>
+            <h2>The arc matters more than the titles.</h2>
+            <p className="intro">Computer science became systems thinking. Systems thinking became strategy. Strategy moved into operations, capital and board-level leadership.</p>
+          </div>
+        </div>
+        <div className="career-flow">
+          {profile.career.map((item, index) => (
+            <a className="career-step" href={item.href} target="_blank" rel="noreferrer" key={`${item.period}-${item.title}`}>
+              <div className="career-index">0{index + 1}</div>
+              <div className="career-period">{item.period}</div>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+              <span>↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="chapter shell" id="now">
         <div className="chapter-head">
           <div className="eyebrow">2026 / now</div>
@@ -76,7 +110,7 @@ export default function AlexIrunePage() {
         </div>
         <div className="signal-grid">
           {profile.signals.map((signal, index) => (
-            <article className={`signal ${index === 0 ? "feature" : ""}`} key={signal.title}>
+            <article className={`signal ${index === 0 ? "feature" : ""}`} key={`${signal.date}-${signal.title}`}>
               <div>
                 <div className="eyebrow">{signal.date} · {signal.label}</div>
                 <h3>{signal.title}</h3>
@@ -92,8 +126,8 @@ export default function AlexIrunePage() {
         <div className="chapter-head">
           <div className="eyebrow">Public access</div>
           <div>
-            <h2>Reach the institution. Meet in public.</h2>
-            <p className="intro">Fast, legitimate routes to contact and public appearances — without turning an executive profile into a private-location tracker.</p>
+            <h2>Reach the institution. Follow the public voice.</h2>
+            <p className="intro">Fast, legitimate routes to contact, public appearances and direct social profiles — without turning an executive profile into a private-location tracker.</p>
           </div>
         </div>
 
@@ -141,13 +175,13 @@ export default function AlexIrunePage() {
         <div className="chapter-head">
           <div className="eyebrow">Social signal</div>
           <div>
-            <h2>Follow the public voice.</h2>
-            <p className="intro">Social links are treated as context and legitimate outreach surfaces — not as a basis for inferring private hangouts, evening routines or off-calendar movements.</p>
+            <h2>One tap to the public conversation.</h2>
+            <p className="intro">Instagram is now linked to the direct <strong>@alexirune</strong> profile you supplied. LinkedIn remains the strongest indexed source for professional thought leadership and event context.</p>
           </div>
         </div>
         <div className="social-list">
           {profile.social.map((account) => (
-            <a href={account.href} target="_blank" rel="noreferrer" className="social-row" key={account.label}>
+            <a href={account.href} target="_blank" rel="noreferrer" className={`social-row social-${account.emphasis}`} key={account.label}>
               <div className="social-label">{account.label}</div>
               <div>
                 <h3>{account.handle}</h3>
@@ -184,7 +218,7 @@ export default function AlexIrunePage() {
           <div className="eyebrow">Chevron / stakeholder route</div>
           <div>
             <h2>Asset relationship first.</h2>
-            <p className="intro">The useful Chevron connection is the documented OML 145 co-venture and the official corporate interfaces around it — not private personnel targeting.</p>
+            <p className="intro">The Chevron connection is part of a broader historical OML 145 partner structure. Showing the full asset ecosystem is more accurate — and more useful — than suggesting a personal relationship.</p>
           </div>
         </div>
         <div className="stakeholder-stack">
@@ -207,7 +241,7 @@ export default function AlexIrunePage() {
           <div className="eyebrow">Source ledger</div>
           <div>
             <h2>Everything remains auditable.</h2>
-            <p className="intro">Primary corporate material is preferred; press and event sources add current context. Public claims should retain provenance internally.</p>
+            <p className="intro">Primary corporate material is preferred; press and event sources add current context. Public claims retain provenance instead of disappearing into anonymous profile copy.</p>
           </div>
         </div>
         <div className="source-grid">
