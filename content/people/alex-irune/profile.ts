@@ -26,6 +26,92 @@ export const alexIrune = {
     label: "NOG Energy Week · Abuja",
     headline: "Energy security is infrastructure, certainty and capital.",
   },
+  contact: {
+    officialEmail: "info@oandoenergyresources.com",
+    officialPhone: "+234-02-014656000",
+    office: "The Wings Complex, 17a Ozumba Mbadiwe Avenue, Victoria Island, Lagos",
+    officialContactHref: "https://www.oandoenergyresources.com/contact-us/",
+    note: "Public corporate channels only. Personal email, private phone numbers and non-public contact details are not published here.",
+  },
+  social: [
+    {
+      label: "LinkedIn",
+      handle: "Ainojie Alex Irune (PhD)",
+      href: "https://ng.linkedin.com/in/ainojie-alex-irune",
+      note: "Most active public professional channel and best route for context-rich outreach.",
+    },
+    {
+      label: "Instagram",
+      handle: "@ainojiealexirune",
+      href: "https://www.instagram.com/ainojiealexirune/",
+      note: "Public social profile; verify current availability before publishing as an official channel.",
+    },
+    {
+      label: "Oando",
+      handle: "Corporate media & contact",
+      href: "https://www.oandoplc.com/contact-us",
+      note: "Official corporate route for formal enquiries, media and institutional contact.",
+    },
+  ],
+  publicSchedule: [
+    {
+      date: "12–16 Oct 2026",
+      event: "African Energy Week 2026",
+      location: "Cape Town",
+      status: "Confirmed public appearance",
+      href: "https://aecweek.com/speakers/dr-ainojie-alex-irune",
+    },
+    {
+      date: "Recurring industry cycle",
+      event: "NOG · NIES · energy leadership forums",
+      location: "Public venues only",
+      status: "Monitor — not assumed",
+      href: "https://www.nogenergyweek.com/speaker-collection/2026-exco/dr-ainojie-alex-irune/",
+    },
+  ],
+  accessRoutes: [
+    {
+      label: "Formal / institutional",
+      title: "OER corporate office",
+      body: "Use the official Oando Energy Resources email or switchboard for institutional, partnership, investor or formal executive correspondence.",
+      href: "mailto:info@oandoenergyresources.com",
+      action: "Email OER",
+    },
+    {
+      label: "Professional / contextual",
+      title: "LinkedIn",
+      body: "For a concise professional introduction, reference a shared industry context, public article, event or mutual professional connection rather than asking for private access.",
+      href: "https://ng.linkedin.com/in/ainojie-alex-irune",
+      action: "Open LinkedIn",
+    },
+    {
+      label: "Public-event route",
+      title: "Meet where participation is confirmed",
+      body: "Conference appearances provide the cleanest legitimate path to introductions through organisers, speaker lounges, panels and official networking programmes.",
+      href: "https://aecweek.com/speakers/dr-ainojie-alex-irune",
+      action: "View next event",
+    },
+  ],
+  chevronNetwork: [
+    {
+      name: "Chevron Nigeria Limited",
+      role: "Historical OML 145 co-venturer",
+      body: "Oando’s 2014 acquisition included a 20% non-operating interest in OPL 214, converted to OML 145. The published co-venture structure included Chevron alongside ExxonMobil, Svenska, NPDC and Sasol.",
+      href: "https://www.oandoplc.com/press-release/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us-1-5-billion",
+    },
+    {
+      name: "Chevron Nigeria supplier / corporate interface",
+      role: "Official Chevron business route",
+      body: "For legitimate business outreach, use Chevron Nigeria Limited’s published corporate or supplier channels rather than attempting to infer or target private personnel.",
+      href: "https://vis-nma.azure.chevron.com/Supplier/Index",
+    },
+    {
+      name: "OML 145 partner ecosystem",
+      role: "Asset-level stakeholder context",
+      body: "The relevant relationship is asset and institution based. The historical published structure links Oando with Chevron and other co-venturers; it does not establish a personal relationship between Irune and individual Chevron executives.",
+      href: "https://www.prnewswire.com/news-releases/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us15-billion-269216491.html",
+    },
+  ],
   signals: [
     {
       date: "20 Jan 2026",
@@ -97,10 +183,12 @@ export const alexIrune = {
   ],
   sources: [
     ["OER official biography", "Role · education · operational scope", "https://www.oandoenergyresources.com/about-us/ainojie-irune-managing-director"],
+    ["OER contact", "Official Lagos office · email · phone", "https://www.oandoenergyresources.com/contact-us/"],
     ["The Energy Year · Jan 2026", "Operatorship · execution · regional ambition", "https://theenergyyear.com/articles/driving-production-growth-through-indigenous-control/"],
     ["Oando · NIES 2026", "Capital discipline · collaboration · governance", "https://www.oandoplc.com/media-releases/oando-links-collaborative-upstream-leadership-with-capital-discipline-at-nies-2026"],
     ["Oando · CIoD 2026", "Board leadership · diversity · resilience", "https://www.oandoplc.com/media-releases/oando-executives-advocate-intentional-pathways-to-womens-leadership-as-a-business-imperative"],
     ["NOG Energy Week 2026", "Speaker profile · Abuja", "https://www.nogenergyweek.com/speaker-collection/2026-exco/dr-ainojie-alex-irune/"],
     ["African Energy Week 2026", "Confirmed speaker profile", "https://aecweek.com/speakers/dr-ainojie-alex-irune"],
+    ["Oando / OML 145", "Historical Chevron co-venture context", "https://www.oandoplc.com/press-release/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us-1-5-billion"],
   ],
 } as const;
