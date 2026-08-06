@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useState } from "react";
 
 type SourceImageProps = {
@@ -9,6 +10,7 @@ type SourceImageProps = {
   fallbackClassName?: string;
   fallbackLabel?: string;
   eager?: boolean;
+  style?: CSSProperties;
 };
 
 export function SourceImage({
@@ -18,6 +20,7 @@ export function SourceImage({
   fallbackClassName,
   fallbackLabel = "DYRANE EXECUTIVE",
   eager = false,
+  style,
 }: SourceImageProps) {
   const [failed, setFailed] = useState(false);
 
@@ -38,6 +41,7 @@ export function SourceImage({
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
       referrerPolicy="no-referrer"
+      style={style}
       onError={() => setFailed(true)}
     />
   );
