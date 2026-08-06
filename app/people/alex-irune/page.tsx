@@ -1,4 +1,6 @@
+import { PublicRooms } from "@/components/executive/public-rooms";
 import { alexIrune } from "@/content/people/alex-irune/profile";
+import { alexIrunePublicRooms } from "@/content/people/alex-irune/public-rooms";
 
 export default function AlexIrunePage() {
   const profile = alexIrune;
@@ -13,6 +15,7 @@ export default function AlexIrunePage() {
             <a href="#career">Career</a>
             <a href="#now">Now</a>
             <a href="#access">Access</a>
+            <a href="#rooms">Rooms</a>
             <a href="#network">Network</a>
             <a href="#sources">Sources</a>
           </nav>
@@ -176,7 +179,7 @@ export default function AlexIrunePage() {
           <div className="eyebrow">Social signal</div>
           <div>
             <h2>One tap to the public conversation.</h2>
-            <p className="intro">Instagram is now linked to the direct <strong>@alexirune</strong> profile you supplied. LinkedIn remains the strongest indexed source for professional thought leadership and event context.</p>
+            <p className="intro">Instagram is linked to the direct <strong>@alexirune</strong> profile you supplied. LinkedIn remains the strongest indexed source for professional thought leadership and event context.</p>
           </div>
         </div>
         <div className="social-list">
@@ -192,6 +195,8 @@ export default function AlexIrunePage() {
           ))}
         </div>
       </section>
+
+      <PublicRooms rooms={alexIrunePublicRooms} />
 
       <section className="chapter shell" id="network">
         <div className="chapter-head">
