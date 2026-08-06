@@ -1,0 +1,106 @@
+export const alexIrune = {
+  slug: "alex-irune",
+  name: "Ainojie “Alex” Irune",
+  eyebrow: "Executive Intelligence Profile / Public-source draft",
+  roles: [
+    "Executive Director · Oando PLC",
+    "Managing Director · Oando Energy Resources",
+    "Board Director · Umugini Pipeline Infrastructure",
+  ],
+  thesis:
+    "Computer scientist turned strategist turned upstream operator — now working at the intersection of indigenous energy scale, capital discipline, institutional leadership and Nigeria’s next energy infrastructure cycle.",
+  manifesto: [
+    ["Technology", "taught systems."],
+    ["Strategy", "taught scale."],
+    ["Operations", "taught execution."],
+  ],
+  heroImage: {
+    src: "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/d7900c8f-e6f7-492a-8743-ea5c4d5087c0/Alex-MD.png",
+    alt: "Dr. Ainojie Alex Irune",
+    source: "https://www.oandoenergyresources.com/about-us/ainojie-irune-managing-director",
+  },
+  featuredVisual: {
+    src: "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg",
+    alt: "Alex Irune speaking at NOG Energy Week",
+    source: "https://environmentafricamag.com/2025/07/04/oando-md-alex-irune-urges-mindset-shift-bold-investment-and-collaboration-to-secure-nigerias-energy-future/",
+    label: "NOG Energy Week · Abuja",
+    headline: "Energy security is infrastructure, certainty and capital.",
+  },
+  signals: [
+    {
+      date: "20 Jan 2026",
+      label: "The Energy Year",
+      title: "2026 is an execution year.",
+      body: "Irune frames the year around driving costs down, production up, and strengthening people, systems and governance as indigenous operators take on larger assets.",
+      href: "https://theenergyyear.com/articles/driving-production-growth-through-indigenous-control/",
+    },
+    {
+      date: "02–05 Feb 2026",
+      label: "NIES",
+      title: "Capital discipline.",
+      body: "Policy alignment, governance and credible capital pathways are positioned as prerequisites for sustained upstream growth.",
+      href: "https://www.oandoplc.com/media-releases/oando-links-collaborative-upstream-leadership-with-capital-discipline-at-nies-2026",
+    },
+    {
+      date: "01 Jul 2026",
+      label: "CIoD Nigeria",
+      title: "From presence to power.",
+      body: "Board diversity is framed as business advantage and better decision architecture, not ceremonial representation.",
+      href: "https://www.oandoplc.com/media-releases/oando-executives-advocate-intentional-pathways-to-womens-leadership-as-a-business-imperative",
+    },
+    {
+      date: "06–09 Jul 2026",
+      label: "NOG Energy Week",
+      title: "Optimise first. Then scale.",
+      body: "Security, policy clarity, execution and investability determine whether capital follows.",
+      href: "https://www.nogenergyweek.com/speaker-collection/2026-exco/dr-ainojie-alex-irune/",
+    },
+    {
+      date: "27 Jul 2026",
+      label: "Power",
+      title: "Gas-to-power + new technology.",
+      body: "Public engagement with the Ministry of Power connected Oando gas assets with grid contribution and new-generation energy concepts.",
+      href: "https://guardian.ng/business-services/oando-reaffirms-commitment-to-gas-led-economic-growth/",
+    },
+  ],
+  relationships: [
+    {
+      type: "Corporate leadership",
+      name: "Adewale “Wale” Tinubu",
+      body: "Group Chief Executive of Oando PLC. Central corporate leadership relationship.",
+      href: "https://www.oandoplc.com/our-people",
+    },
+    {
+      type: "Industry coalition",
+      name: "Adegbite Falade",
+      body: "Aradel CEO and IPPG Chairman. Public engagement around indigenous upstream collaboration.",
+      href: "https://businessday.ng/energy/article/oando-doubles-down-on-nigerias-indigenous-oil-push/",
+    },
+    {
+      type: "Board network",
+      name: "Umugini Pipeline",
+      body: "Irune is publicly listed as a director, extending the institutional network into pipeline infrastructure.",
+      href: "https://umugini.com/board-of-directors/",
+    },
+    {
+      type: "Chevron link",
+      name: "OML 145 structure",
+      body: "The defensible connection is structural: Oando’s acquired upstream interest sits in a historical co-venture ecosystem that included Chevron. No employment relationship should be implied.",
+      href: "https://www.prnewswire.com/news-releases/oando-energy-resources-completes-landmark-acquisition-of-conocophillips-nigerian-oil-and-gas-business-for-us15-billion-269216491.html",
+    },
+    {
+      type: "Public influence circuit",
+      name: "NOG · NIES · AEW · EGYPES",
+      body: "These recurring industry venues are the strongest observable cadence for a living Now / Recently / Next layer.",
+      href: "https://aecweek.com/speakers/dr-ainojie-alex-irune",
+    },
+  ],
+  sources: [
+    ["OER official biography", "Role · education · operational scope", "https://www.oandoenergyresources.com/about-us/ainojie-irune-managing-director"],
+    ["The Energy Year · Jan 2026", "Operatorship · execution · regional ambition", "https://theenergyyear.com/articles/driving-production-growth-through-indigenous-control/"],
+    ["Oando · NIES 2026", "Capital discipline · collaboration · governance", "https://www.oandoplc.com/media-releases/oando-links-collaborative-upstream-leadership-with-capital-discipline-at-nies-2026"],
+    ["Oando · CIoD 2026", "Board leadership · diversity · resilience", "https://www.oandoplc.com/media-releases/oando-executives-advocate-intentional-pathways-to-womens-leadership-as-a-business-imperative"],
+    ["NOG Energy Week 2026", "Speaker profile · Abuja", "https://www.nogenergyweek.com/speaker-collection/2026-exco/dr-ainojie-alex-irune/"],
+    ["African Energy Week 2026", "Confirmed speaker profile", "https://aecweek.com/speakers/dr-ainojie-alex-irune"],
+  ],
+} as const;
