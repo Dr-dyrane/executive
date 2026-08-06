@@ -1,196 +1,268 @@
+import { Icon } from "@/components/executive/icon";
 import { PublicRooms } from "@/components/executive/public-rooms";
+import { SourceImage } from "@/components/executive/source-image";
+import { alexIruneEditorial } from "@/content/people/alex-irune/editorial";
 import { alexIrune } from "@/content/people/alex-irune/profile";
 import { alexIrunePublicRooms } from "@/content/people/alex-irune/public-rooms";
+import styles from "./profile.module.css";
+
+const storyLayoutClass = {
+  lead: styles.storyLead,
+  portrait: styles.storyPortrait,
+  landscape: styles.storyLandscape,
+  square: styles.storySquare,
+  map: styles.storyMap,
+} as const;
 
 export default function AlexIrunePage() {
   const profile = alexIrune;
+  const editorial = alexIruneEditorial;
 
   return (
-    <main>
-      <header className="topbar">
-        <div className="shell topbar-inner">
-          <div className="brand">DYRANE / EIP–001</div>
-          <nav className="nav" aria-label="Profile navigation">
-            <a href="#story">Story</a>
-            <a href="#career">Career</a>
+    <main className={styles.page}>
+      <header className={styles.topbar}>
+        <div className={styles.topbarInner}>
+          <a className={styles.wordmark} href="/">Dyrane Executive</a>
+          <nav className={styles.nav} aria-label="Issue navigation">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#career">Index</a>
             <a href="#now">Now</a>
             <a href="#access">Access</a>
             <a href="#rooms">Rooms</a>
-            <a href="#network">Network</a>
             <a href="#sources">Sources</a>
           </nav>
         </div>
       </header>
 
-      <section className="hero shell">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <div>
-              <div className="kicker">{profile.eyebrow}</div>
-              <h1>Ainojie<br />“Alex”<br />Irune</h1>
-            </div>
-            <div>
-              <p>{profile.thesis}</p>
-              <div className="pills">
-                {profile.roles.map((role, index) => (
-                  <span className={`pill ${index === 0 ? "gold" : ""}`} key={role}>{role}</span>
-                ))}
-              </div>
-            </div>
+      <section className={styles.cover} aria-labelledby="cover-title">
+        <SourceImage
+          src={profile.heroImage.src}
+          alt={profile.heroImage.alt}
+          className={styles.coverImage}
+          fallbackClassName={styles.coverFallback}
+          fallbackLabel="ALEX IRUNE"
+          eager
+        />
+        <div className={styles.coverShade} />
+        <div className={styles.coverMasthead}>Dyrane Executive</div>
+        <div className={styles.coverIssue}>
+          No. {editorial.issue}<br />
+          {editorial.date}<br />
+          {editorial.edition}
+        </div>
+        <a
+          className={`${styles.sourceButton} ${styles.coverSource}`}
+          href={profile.heroImage.source}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open official portrait source"
+          title="Official portrait source"
+        >
+          <Icon name="source" />
+        </a>
+        <h1 className={styles.coverTitle} id="cover-title">
+          <span>Executive Director · Operator · Technologist</span>
+          Ainojie<br />Alex Irune
+        </h1>
+        <div className={styles.coverLines} aria-label="Issue cover stories">
+          {editorial.coverLines.map((line) => {
+            const external = !line.href.startsWith("#");
+            return (
+              <a
+                className={styles.coverLine}
+                href={line.href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noreferrer" : undefined}
+                key={line.title}
+              >
+                <div>
+                  <small>{line.label}</small>
+                  <strong>{line.title}</strong>
+                </div>
+                <Icon name="arrow" />
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
+      <div className={`${styles.issueBar} ${styles.shell}`} aria-label="Issue metadata">
+        <strong>Issue {editorial.issue}</strong>
+        <span>Public-source portrait</span>
+        <span>{editorial.visualStories.length} visual stories</span>
+        <span>Every image opens its source</span>
+      </div>
+
+      <section className={`${styles.opening} ${styles.shell}`} id="portfolio">
+        <div className={styles.openingGrid}>
+          <h2 className={styles.displaySerif}>Technology.<br />Strategy.<br />Operatorship.</h2>
+          <div className={styles.roles} aria-label="Current roles">
+            {profile.roles.map((role) => <div className={styles.role} key={role}>{role}</div>)}
           </div>
-
-          <a className="hero-visual" href={profile.heroImage.source} target="_blank" rel="noreferrer">
-            <img src={profile.heroImage.src} alt={profile.heroImage.alt} />
-            <div className="caption">Official profile · source ↗</div>
-          </a>
         </div>
       </section>
 
-      <section className="manifesto shell" id="story">
-        <div className="manifesto-copy">
-          {profile.manifesto.map(([lead, tail]) => (
-            <div key={lead}>{lead} <span className="faded">{tail}</span></div>
-          ))}
-        </div>
-      </section>
-
-      <section className="fact-strip shell" aria-label="Executive profile facts">
+      <section className={`${styles.facts} ${styles.shell}`} aria-label="Profile facts">
         {profile.facts.map((fact) => (
-          <a className="fact" href={fact.href} target="_blank" rel="noreferrer" key={fact.label}>
-            <div className="eyebrow">{fact.label}</div>
+          <a href={fact.href} target="_blank" rel="noreferrer" className={styles.fact} key={fact.label}>
+            <small>{fact.label}</small>
             <strong>{fact.value}</strong>
             <span>{fact.detail}</span>
           </a>
         ))}
       </section>
 
-      <section className="chapter shell">
-        <div className="story-grid">
-          <a className="visual" href={profile.featuredVisual.source} target="_blank" rel="noreferrer">
-            <img src={profile.featuredVisual.src} alt={profile.featuredVisual.alt} />
-            <div className="visual-copy">
-              <div className="eyebrow">{profile.featuredVisual.label}</div>
-              <h3>{profile.featuredVisual.headline}</h3>
-            </div>
-          </a>
-          <div className="quote">
-            <blockquote>“Capital follows opportunity, not need.”</blockquote>
-            <small>Publicly recurring thesis in recent energy-sector commentary. Keep the underlying source record attached before using it as hero quotation copy.</small>
-          </div>
+      <section className={`${styles.photoEssay} ${styles.shell}`} aria-labelledby="visual-title">
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionLabel}>The portfolio</div>
+          <h2 className={styles.sectionTitle} id="visual-title">Eight frames.<br />One operating story.</h2>
         </div>
-      </section>
-
-      <section className="chapter shell" id="career">
-        <div className="chapter-head">
-          <div className="eyebrow">Career architecture</div>
-          <div>
-            <h2>The arc matters more than the titles.</h2>
-            <p className="intro">Computer science became systems thinking. Systems thinking became strategy. Strategy moved into operations, capital and board-level leadership.</p>
-          </div>
-        </div>
-        <div className="career-flow">
-          {profile.career.map((item, index) => (
-            <a className="career-step" href={item.href} target="_blank" rel="noreferrer" key={`${item.period}-${item.title}`}>
-              <div className="career-index">0{index + 1}</div>
-              <div className="career-period">{item.period}</div>
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
+        <div className={styles.storyGrid}>
+          {editorial.visualStories.map((story) => (
+            <a
+              className={`${styles.story} ${storyLayoutClass[story.layout]}`}
+              href={story.href}
+              target="_blank"
+              rel="noreferrer"
+              key={`${story.label}-${story.title}`}
+              aria-label={`${story.title}. Open source.`}
+            >
+              <SourceImage
+                src={story.src}
+                alt={story.alt}
+                className={styles.storyImage}
+                fallbackClassName={styles.storyFallback}
+                fallbackLabel={story.label}
+              />
+              {story.position ? <style>{`.${styles.storyImage}[alt="${story.alt.replaceAll('"', '\\"')}"]{object-position:${story.position}}`}</style> : null}
+              <div className={styles.storyShade} />
+              <div className={styles.storyCopy}>
+                <div className={styles.storyLabel}>{story.label}</div>
+                <h3>{story.title}</h3>
               </div>
-              <span>↗</span>
+              <span className={`${styles.sourceButton} ${styles.storySource}`} aria-hidden="true">
+                <Icon name="source" />
+              </span>
             </a>
           ))}
         </div>
       </section>
 
-      <section className="chapter shell" id="now">
-        <div className="chapter-head">
-          <div className="eyebrow">2026 / now</div>
-          <div>
-            <h2>The current signal is execution.</h2>
-            <p className="intro">Recent public activity clusters around indigenous operators, production growth, disciplined capital, domestic gas, governance and institutional capability.</p>
+      <section className={styles.paper} id="career">
+        <div className={`${styles.paperInner} ${styles.shell}`}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionLabel}>Career index</div>
+            <h2 className={styles.sectionTitle}>From code<br />to control.</h2>
+          </div>
+          <div className={styles.indexList}>
+            {profile.career.map((item, index) => (
+              <a
+                className={styles.indexRow}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                title={item.body}
+                key={`${item.period}-${item.title}`}
+              >
+                <span className={styles.indexNumber}>{String(index + 1).padStart(2, "0")}</span>
+                <span className={styles.indexDate}>{item.period}</span>
+                <h3>{item.title}</h3>
+                <Icon name="arrow" />
+              </a>
+            ))}
           </div>
         </div>
-        <div className="signal-grid">
-          {profile.signals.map((signal, index) => (
-            <article className={`signal ${index === 0 ? "feature" : ""}`} key={`${signal.date}-${signal.title}`}>
+      </section>
+
+      <section className={`${styles.headlines} ${styles.shell}`} id="now">
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionLabel}>Now / 2026</div>
+          <h2 className={styles.sectionTitle}>The current<br />headlines.</h2>
+        </div>
+        <div className={styles.headlineGrid}>
+          {profile.signals.map((signal) => (
+            <article className={styles.headline} key={`${signal.date}-${signal.title}`} title={signal.body}>
               <div>
-                <div className="eyebrow">{signal.date} · {signal.label}</div>
+                <div className={styles.indexEyebrow}>{signal.date} · {signal.label}</div>
                 <h3>{signal.title}</h3>
-                <p>{signal.body}</p>
               </div>
-              <a href={signal.href} target="_blank" rel="noreferrer">Source ↗</a>
+              <div className={styles.headlineFooter}>
+                <span>Public record</span>
+                <a
+                  className={styles.iconButton}
+                  href={signal.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open source for ${signal.title}`}
+                >
+                  <Icon name="source" />
+                </a>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="chapter shell" id="access">
-        <div className="chapter-head">
-          <div className="eyebrow">Public access</div>
-          <div>
-            <h2>Reach the institution. Follow the public voice.</h2>
-            <p className="intro">Fast, legitimate routes to contact, public appearances and direct social profiles — without turning an executive profile into a private-location tracker.</p>
+      <section className={styles.paper} id="access">
+        <div className={`${styles.access} ${styles.shell}`}>
+          <div className={styles.sectionLabel}>Public access</div>
+          <div className={styles.contactWord}>
+            <a href={`mailto:${profile.contact.officialEmail}`}>{profile.contact.officialEmail}</a>
+            <a href={`tel:${profile.contact.officialPhone.replace(/[^+\d]/g, "")}`}>{profile.contact.officialPhone}</a>
           </div>
-        </div>
-
-        <div className="contact-stage">
-          <div className="contact-primary">
-            <div className="eyebrow">Oando Energy Resources</div>
-            <a className="contact-email" href={`mailto:${profile.contact.officialEmail}`}>{profile.contact.officialEmail}</a>
-            <a className="contact-phone" href={`tel:${profile.contact.officialPhone.replace(/[^+\d]/g, "")}`}>{profile.contact.officialPhone}</a>
-            <p>{profile.contact.office}</p>
-            <div className="contact-actions">
-              <a href={`mailto:${profile.contact.officialEmail}`}>Write ↗</a>
-              <a href={profile.contact.officialContactHref} target="_blank" rel="noreferrer">Official contact page ↗</a>
+          <div className={styles.accessMeta}>
+            <div>
+              <div className={styles.metaLabel}>Office</div>
+              <p className={styles.office}>{profile.contact.office}</p>
             </div>
-            <small>{profile.contact.note}</small>
+            <div className={styles.quickLinks} aria-label="Public contact and social links">
+              <a className={styles.quickLink} href={`mailto:${profile.contact.officialEmail}`}>
+                <Icon name="mail" /> Email
+              </a>
+              <a className={styles.quickLink} href={`tel:${profile.contact.officialPhone.replace(/[^+\d]/g, "")}`}>
+                <Icon name="phone" /> Call
+              </a>
+              <a className={styles.quickLink} href={profile.social[0].href} target="_blank" rel="noreferrer">
+                <Icon name="instagram" /> Instagram
+              </a>
+              <a className={styles.quickLink} href={profile.social[1].href} target="_blank" rel="noreferrer">
+                <Icon name="linkedin" /> LinkedIn
+              </a>
+              <a className={styles.quickLink} href={profile.contact.officialContactHref} target="_blank" rel="noreferrer">
+                <Icon name="compass" /> Office
+              </a>
+            </div>
           </div>
-
-          <div className="schedule-rail">
-            <div className="eyebrow">Public calendar</div>
+          <div className={styles.calendar} aria-label="Public calendar">
             {profile.publicSchedule.map((item) => (
-              <a className="schedule-item" href={item.href} target="_blank" rel="noreferrer" key={`${item.date}-${item.event}`}>
-                <div className="schedule-date">{item.date}</div>
-                <div>
-                  <h3>{item.event}</h3>
-                  <p>{item.location}</p>
-                </div>
-                <span>{item.status} ↗</span>
+              <a className={styles.calendarRow} href={item.href} target="_blank" rel="noreferrer" key={`${item.date}-${item.event}`}>
+                <span>{item.date}</span>
+                <strong>{item.event}</strong>
+                <Icon name="calendar" />
               </a>
             ))}
           </div>
         </div>
-
-        <div className="access-grid">
-          {profile.accessRoutes.map((route) => (
-            <a className="access-route" href={route.href} target={route.href.startsWith("http") ? "_blank" : undefined} rel={route.href.startsWith("http") ? "noreferrer" : undefined} key={route.title}>
-              <div className="eyebrow">{route.label}</div>
-              <h3>{route.title}</h3>
-              <p>{route.body}</p>
-              <span>{route.action} ↗</span>
-            </a>
-          ))}
-        </div>
       </section>
 
-      <section className="chapter shell">
-        <div className="chapter-head">
-          <div className="eyebrow">Social signal</div>
-          <div>
-            <h2>One tap to the public conversation.</h2>
-            <p className="intro">Instagram is linked to the direct <strong>@alexirune</strong> profile you supplied. LinkedIn remains the strongest indexed source for professional thought leadership and event context.</p>
-          </div>
-        </div>
-        <div className="social-list">
+      <section className={`${styles.socialPoster} ${styles.shell}`} aria-labelledby="social-title">
+        <div className={styles.sectionLabel}>Public voice</div>
+        <h2 className={styles.sectionTitle} id="social-title">Follow the signal.</h2>
+        <div className={styles.socialList}>
           {profile.social.map((account) => (
-            <a href={account.href} target="_blank" rel="noreferrer" className={`social-row social-${account.emphasis}`} key={account.label}>
-              <div className="social-label">{account.label}</div>
-              <div>
-                <h3>{account.handle}</h3>
-                <p>{account.note}</p>
-              </div>
-              <span>↗</span>
+            <a
+              className={styles.socialLink}
+              href={account.href}
+              target="_blank"
+              rel="noreferrer"
+              key={account.label}
+              title={account.note}
+            >
+              <span className={styles.socialPlatform}>
+                <Icon name={account.label === "Instagram" ? "instagram" : account.label === "LinkedIn" ? "linkedin" : "compass"} size={28} />
+              </span>
+              <h3>{account.handle}</h3>
+              <Icon name="arrow" />
             </a>
           ))}
         </div>
@@ -198,69 +270,70 @@ export default function AlexIrunePage() {
 
       <PublicRooms rooms={alexIrunePublicRooms} />
 
-      <section className="chapter shell" id="network">
-        <div className="chapter-head">
-          <div className="eyebrow">Relationship intelligence</div>
-          <div>
-            <h2>Map the institution, not the gossip.</h2>
-            <p className="intro">Only documented professional, corporate, board, industry and public-sector relationships belong here. No private daily routine, private relationship or non-public location inference.</p>
+      <section className={styles.paper} id="network">
+        <div className={`${styles.network} ${styles.shell}`}>
+          <div className={styles.sectionLabel}>Institutional network</div>
+          <h2 className={styles.sectionTitle}>The names<br />around the work.</h2>
+          <div className={styles.nameWall}>
+            {profile.relationships.map((relationship) => (
+              <a
+                className={styles.nameLink}
+                href={relationship.href}
+                target="_blank"
+                rel="noreferrer"
+                title={`${relationship.type}: ${relationship.body}`}
+                key={`${relationship.type}-${relationship.name}`}
+              >
+                {relationship.name}
+              </a>
+            ))}
           </div>
         </div>
-        <div className="people-grid">
-          {profile.relationships.map((relationship) => (
-            <article className="person" key={`${relationship.type}-${relationship.name}`}>
-              <div className="eyebrow">{relationship.type}</div>
-              <h3>{relationship.name}</h3>
-              <p>{relationship.body}</p>
-              <a href={relationship.href} target="_blank" rel="noreferrer">Evidence ↗</a>
-            </article>
+      </section>
+
+      <section className={`${styles.stakeholders} ${styles.shell}`} aria-labelledby="stakeholder-title">
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionLabel}>OML 145 / Chevron context</div>
+          <h2 className={styles.sectionTitle} id="stakeholder-title">Asset first.<br />Names second.</h2>
+        </div>
+        <div className={styles.stakeholderGrid}>
+          {profile.chevronNetwork.map((stakeholder) => (
+            <a
+              className={styles.stakeholder}
+              href={stakeholder.href}
+              target="_blank"
+              rel="noreferrer"
+              title={stakeholder.body}
+              key={stakeholder.name}
+            >
+              <div className={styles.indexEyebrow}>{stakeholder.role}</div>
+              <h3>{stakeholder.name}</h3>
+            </a>
           ))}
         </div>
       </section>
 
-      <section className="chapter shell">
-        <div className="chapter-head">
-          <div className="eyebrow">Chevron / stakeholder route</div>
-          <div>
-            <h2>Asset relationship first.</h2>
-            <p className="intro">The Chevron connection is part of a broader historical OML 145 partner structure. Showing the full asset ecosystem is more accurate — and more useful — than suggesting a personal relationship.</p>
-          </div>
+      <section className={`${styles.sourceIndex} ${styles.shell}`} id="sources">
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionLabel}>Source index</div>
+          <h2 className={styles.sectionTitle}>Open every<br />footnote.</h2>
         </div>
-        <div className="stakeholder-stack">
-          {profile.chevronNetwork.map((stakeholder, index) => (
-            <a className="stakeholder-row" href={stakeholder.href} target="_blank" rel="noreferrer" key={stakeholder.name}>
-              <div className="stakeholder-index">0{index + 1}</div>
+        <div className={styles.sourceList}>
+          {profile.sources.map(([title, detail, href], index) => (
+            <a className={styles.sourceEntry} href={href} target="_blank" rel="noreferrer" key={title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
               <div>
-                <div className="eyebrow">{stakeholder.role}</div>
-                <h3>{stakeholder.name}</h3>
-                <p>{stakeholder.body}</p>
+                <b>{title}</b>
+                <small>{detail}</small>
               </div>
-              <span>Evidence ↗</span>
+              <Icon name="arrow" />
             </a>
           ))}
         </div>
       </section>
 
-      <section className="chapter shell" id="sources">
-        <div className="chapter-head">
-          <div className="eyebrow">Source ledger</div>
-          <div>
-            <h2>Everything remains auditable.</h2>
-            <p className="intro">Primary corporate material is preferred; press and event sources add current context. Public claims retain provenance instead of disappearing into anonymous profile copy.</p>
-          </div>
-        </div>
-        <div className="source-grid">
-          {profile.sources.map(([title, detail, href]) => (
-            <a className="source" href={href} target="_blank" rel="noreferrer" key={title}>
-              <div><b>{title}</b><small>{detail}</small></div>
-              <span>↗</span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <footer className="footer shell">
-        DYRANE / Executive Intelligence Profile 001 — public-source research draft. Image and publication rights remain with their respective rights holders. Personal email, private phone numbers, private relationships, favourite hangouts, private locations and non-public schedule inference are intentionally excluded.
+      <footer className={styles.footer}>
+        Dyrane Executive · Issue {editorial.issue} · Public sources only · No private contact, private location or inferred personal schedule.
       </footer>
     </main>
   );
