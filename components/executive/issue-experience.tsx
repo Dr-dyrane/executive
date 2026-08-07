@@ -137,7 +137,12 @@ export function IssueExperience({
   return (
     <>
       <a className={styles.skipLink} href="#main-content">Skip to issue</a>
-      <div className={styles.ambient} aria-hidden="true" />
+      <div
+        className={styles.ambient}
+        data-experience-ambient
+        data-experience-grain
+        aria-hidden="true"
+      />
       <div className={styles.progressTrack} aria-hidden="true">
         <span className={styles.progressValue} style={progressStyle} />
       </div>
@@ -145,7 +150,7 @@ export function IssueExperience({
       {showDock ? (
         <aside className={styles.dock} aria-label="Issue chapters">
           <div className={styles.dockHead}>
-            <span className={styles.liveDot} aria-hidden="true" />
+            <span className={styles.liveDot} data-experience-pulse aria-hidden="true" />
             <span>{issueLabel}</span>
           </div>
 
