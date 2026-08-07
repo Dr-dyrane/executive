@@ -1,39 +1,55 @@
 import Link from "next/link";
+import { Icon } from "@/components/executive/icon";
+import { SourceImage } from "@/components/executive/source-image";
+import { alexIruneEditorial } from "@/content/people/alex-irune/editorial";
+import { alexIrune } from "@/content/people/alex-irune/profile";
+import styles from "./home.module.css";
 
 export default function HomePage() {
+  const editorial = alexIruneEditorial;
+
   return (
-    <main>
-      <section className="hero shell">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <div>
-              <div className="kicker">Dyrane Executive Intelligence</div>
-              <h1>People,<br />in context.</h1>
-            </div>
-            <div>
-              <p>Evidence-backed executive profiles built from public records, current activity, institutional relationships and source-linked visual storytelling.</p>
-              <div className="pills">
-                <span className="pill gold">EIP–001 live</span>
-                <span className="pill">Public sources only</span>
+    <main className={styles.page}>
+      <section className={styles.cover} aria-labelledby="issue-title">
+        <SourceImage
+          src={alexIrune.heroImage.src}
+          alt={alexIrune.heroImage.alt}
+          className={styles.image}
+          fallbackClassName={styles.fallback}
+          fallbackLabel="DYRANE EXECUTIVE"
+          eager
+        />
+        <div className={styles.shade} />
+        <div className={styles.masthead}>Dyrane Executive</div>
+        <div className={styles.issue}>
+          Issue {editorial.issue}<br />
+          {editorial.date}<br />
+          Public-source edition
+        </div>
+        <h1 className={styles.title} id="issue-title">
+          <small>Technology · Strategy · Operatorship</small>
+          Ainojie<br />Alex Irune
+        </h1>
+        <div className={styles.lines}>
+          {editorial.coverLines.map((line) => (
+            <a className={styles.line} href={line.href} target={line.href.startsWith("#") ? undefined : "_blank"} rel={line.href.startsWith("#") ? undefined : "noreferrer"} key={line.title}>
+              <div>
+                <span>{line.label}</span>
+                <strong>{line.title}</strong>
               </div>
-            </div>
-          </div>
-          <Link className="hero-visual" href="/people/alex-irune">
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/d7900c8f-e6f7-492a-8743-ea5c4d5087c0/Alex-MD.png"
-              alt="Dr. Ainojie Alex Irune"
-            />
-            <div className="caption">Ainojie “Alex” Irune · open profile →</div>
+              <Icon name="arrow" />
+            </a>
+          ))}
+          <Link className={styles.open} href="/people/alex-irune" aria-label="Open issue 001">
+            <Icon name="arrow" size={24} />
           </Link>
         </div>
       </section>
-
-      <section className="manifesto shell">
-        <div className="manifesto-copy">
-          Not a résumé directory.<br />
-          <span className="faded">A living map of leadership, work and influence.</span>
-        </div>
-      </section>
+      <footer className={styles.footer}>
+        <strong>Issue 001 is live</strong>
+        <span>People · work · institutions · public record</span>
+        <span>Open the cover →</span>
+      </footer>
     </main>
   );
 }
