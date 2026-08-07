@@ -1,55 +1,95 @@
-# Executive
+# Dyrane Executive
 
-Dyrane Executive Intelligence Platform.
+A source-backed executive intelligence magazine.
 
-The repository begins with **Dr. Ainojie “Alex” Irune** as the first public-source executive profile and is designed to scale to many executives without changing the core architecture.
+Issue 001 profiles **Dr. Ainojie “Alex” Irune** through public records, current activity, institutional relationships, visual reporting and direct source provenance.
 
 ## Product thesis
 
-Executive is not a résumé directory. It is an evidence-backed editorial intelligence system for understanding a person through:
+Executive is not a résumé directory. Each profile is treated as a living editorial issue built around:
 
-- career architecture
-- current public activity
-- institutional relationships
-- transactions and boards
-- interviews and public ideas
-- events and speaking
-- visual archives
+- identity and career architecture
+- current public signal
+- institutional and asset relationships
+- public access and confirmed events
+- visual essays
 - source provenance
-- confirmed public schedule signals
+- public social and professional circuits
 
-Private relationships, non-public locations, private schedules, contact details, and unverifiable personal information are intentionally excluded.
+Private relationships, personal contact details, inferred routines, non-public locations and unverifiable claims are excluded.
 
-## Initial architecture
+## Experience architecture
 
 ```text
 app/
+  accessibility.css
+  experience.css
+  loading.tsx
+  error.tsx
+  not-found.tsx
+  people/
+    alex-irune/
+      layout.tsx
+      page.tsx
+components/
+  executive/
+    icon.tsx
+    issue-experience.tsx
+    public-rooms.tsx
+    source-image.tsx
+    state-frame.tsx
 content/
   people/
     alex-irune/
+      index.ts
       profile.ts
-public/
-research/
+      editorial.ts
+      public-rooms.ts
+      images.json
+lib/
+  site-url.ts
+scripts/
+  check-experience.mjs
+  check-images.mjs
 ```
 
-## First profile
+## Experience principles
 
-`/people/alex-irune`
+- magazine-cover hierarchy
+- DM Sans display typography + Inter interface typography
+- source icons close to claims
+- cinematic lighting with a persistent calm-mode escape hatch
+- chapter navigation that remains reachable under pressure
+- progressive reveal with reduced-motion parity
+- 44px minimum pressure targets
+- high-contrast and forced-colors support
+- explicit loading, error and not-found recovery states
+- image fallback chains for publisher-hosted media
 
-## Design direction
+## Quality gates
 
-Dyrane editorial language:
+```bash
+npm run check
+npm run build
+```
 
-- image-led storytelling
-- large typography
-- strong hierarchy
-- generous negative space
-- minimal chrome
-- borderless surfaces
-- restrained motion
-- source links always available
-- “show, don’t tell” over explanatory dashboard copy
+`npm run check` verifies:
 
-## Status
+- image availability and fallback coverage
+- skip navigation
+- active chapter announcements
+- calm-mode persistence
+- minimum interaction targets
+- reduced-motion, high-contrast and forced-color support
+- loading, error and recovery states
 
-Foundation in progress.
+## Routes
+
+```text
+/
+/people/alex-irune
+```
+
+## Environment
+
+Set `NEXT_PUBLIC_SITE_URL` for the canonical production domain. Vercel's production URL is used automatically when the explicit domain is absent.
