@@ -6,7 +6,8 @@
     "dev": "next dev",
     "check:images": "node scripts/check-images.mjs",
     "check:experience": "node scripts/check-experience.mjs",
-    "check": "npm run check:experience && npm run check:images",
+    "check:mobile": "node scripts/check-mobile.mjs",
+    "check": "npm run check:experience && npm run check:mobile && npm run check:images",
     "build": "npm run check && next build",
     "start": "next start",
     "lint": "next lint"
