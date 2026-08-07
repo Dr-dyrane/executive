@@ -1,4 +1,5 @@
 import { Icon } from "@/components/executive/icon";
+import { IssueExperience } from "@/components/executive/issue-experience";
 import { PublicRooms } from "@/components/executive/public-rooms";
 import { SourceImage } from "@/components/executive/source-image";
 import { alexIruneEditorial } from "@/content/people/alex-irune/editorial";
@@ -14,28 +15,49 @@ const storyLayoutClass = {
   map: styles.storyMap,
 } as const;
 
+const issueSections = [
+  { id: "cover", label: "Cover", icon: "compass" },
+  { id: "portfolio", label: "Portfolio", icon: "check" },
+  { id: "career", label: "Career", icon: "arrow" },
+  { id: "now", label: "Now", icon: "calendar" },
+  { id: "access", label: "Access", icon: "mail" },
+  { id: "rooms", label: "Rooms", icon: "ticket" },
+  { id: "network", label: "Network", icon: "users" },
+  { id: "sources", label: "Sources", icon: "source" },
+] as const;
+
 export default function AlexIrunePage() {
   const profile = alexIrune;
   const editorial = alexIruneEditorial;
   const hero = editorial.hero;
+  const evidenceCount = profile.sources.length + alexIrunePublicRooms.length;
 
   return (
-    <main className={styles.page}>
+    <main
+      className={styles.page}
+      id="main-content"
+      tabIndex={-1}
+      data-experience-root
+    >
+      <IssueExperience
+        sections={issueSections}
+        issueLabel={`Issue ${editorial.issue}`}
+        sourceCount={evidenceCount}
+        mediaCount={editorial.visualStories.length}
+      />
+
       <header className={styles.topbar}>
         <div className={styles.topbarInner}>
           <a className={styles.wordmark} href="/">Dyrane Executive</a>
           <nav className={styles.nav} aria-label="Issue navigation">
-            <a href="#portfolio">Portfolio</a>
-            <a href="#career">Index</a>
-            <a href="#now">Now</a>
-            <a href="#access">Access</a>
-            <a href="#rooms">Rooms</a>
-            <a href="#sources">Sources</a>
+            <a href="#portfolio">Read</a>
+            <a href="#access">Reach</a>
+            <a href="#sources">Verify</a>
           </nav>
         </div>
       </header>
 
-      <section className={styles.cover} aria-labelledby="cover-title">
+      <section className={styles.cover} id="cover" aria-labelledby="cover-title">
         <SourceImage
           src={hero.src}
           fallbackSrcs={hero.fallbackSrcs}
@@ -96,11 +118,11 @@ export default function AlexIrunePage() {
         </div>
       </section>
 
-      <div className={`${styles.issueBar} ${styles.shell}`} aria-label="Issue metadata">
+      <div className={`${styles.issueBar} ${styles.shell}`} aria-label="Issue trust signals">
         <strong>Issue {editorial.issue}</strong>
-        <span>NOG cover story</span>
-        <span>{editorial.visualStories.length} visual stories</span>
-        <span>Every image opens its source</span>
+        <span>{evidenceCount} public evidence routes</span>
+        <span>{editorial.visualStories.length}/{editorial.visualStories.length} media positions checked</span>
+        <span>Updated {editorial.date}</span>
       </div>
 
       <section className={`${styles.opening} ${styles.shell}`} id="portfolio">
