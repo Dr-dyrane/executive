@@ -115,7 +115,24 @@ export default function NigeriaAngolaPropositionPage() {
               Nigeria<br />
               <em>×</em> Angola
             </h1>
-            <p className={`${styles.heroSubtitle} font-display`}>{proposition.subtitle}.</p>
+            <p className={`${styles.heroSubtitle} font-display`}>
+              {proposition.subtitle}.
+              <span
+                style={{
+                  display: "block",
+                  maxWidth: "640px",
+                  marginTop: "18px",
+                  color: "rgba(255,255,255,0.56)",
+                  fontFamily: "var(--font-ui)",
+                  fontSize: "clamp(13px, 1.15vw, 17px)",
+                  fontWeight: 500,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.45,
+                }}
+              >
+                {proposition.summary}
+              </span>
+            </p>
           </div>
           <CorridorField />
         </div>
@@ -131,7 +148,7 @@ export default function NigeriaAngolaPropositionPage() {
           <a href="#model">
             <div>
               <span>How it works</span>
-              <strong className="font-display">Understand · Find · Verify · Present</strong>
+              <strong className="font-display">Understand · Find · Check · Present</strong>
             </div>
             <Icon name="arrow" />
           </a>
@@ -227,7 +244,7 @@ export default function NigeriaAngolaPropositionPage() {
           <div className={styles.governance}>
             <div>
               <div className={styles.sectionLabel}>Minimum standards</div>
-              <h3 className="font-display">Every company must be real, capable and compliant.</h3>
+              <h3 className="font-display">Every company must be real, safe and able to do the work.</h3>
             </div>
             <ul>
               {proposition.gates.map((gate) => <li key={gate}><Icon name="check" size={18} />{gate}</li>)}
