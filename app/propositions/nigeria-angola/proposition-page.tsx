@@ -6,11 +6,11 @@ import styles from "./proposition.module.css";
 
 const sections = [
   { id: "cover", label: "Cover", icon: "compass" },
-  { id: "mandate", label: "Proposal", icon: "arrow" },
+  { id: "mandate", label: "Plan", icon: "arrow" },
   { id: "model", label: "Process", icon: "users" },
   { id: "sprint", label: "30 days", icon: "calendar" },
-  { id: "decision", label: "The ask", icon: "check" },
-  { id: "sources", label: "Evidence", icon: "source" },
+  { id: "decision", label: "Decide", icon: "check" },
+  { id: "sources", label: "Sources", icon: "source" },
 ] as const;
 
 function CorridorField() {
@@ -90,10 +90,10 @@ export default function NigeriaAngolaPropositionPage() {
         <div className={styles.topbarInner}>
           <Link className={styles.brand} href="/">Dyrane Strategic Ventures</Link>
           <nav className={styles.nav} aria-label="Proposal navigation">
-            <a href="#mandate">Proposal</a>
-            <a href="#model">How it works</a>
+            <a href="#mandate">Plan</a>
+            <a href="#model">Process</a>
             <a href="#sprint">30 days</a>
-            <a href="#decision">The ask</a>
+            <a href="#decision">Decide</a>
           </nav>
           <Link className={styles.returnLink} href="/people/alex-irune">
             Alex Irune <Icon name="arrow" size={15} />
@@ -104,7 +104,7 @@ export default function NigeriaAngolaPropositionPage() {
       <section className={styles.hero} id="cover" aria-labelledby="proposition-title">
         <div className={styles.heroGlow} aria-hidden="true" />
         <div className={styles.heroStamp}>
-          <span>Business development proposal {proposition.number}</span>
+          <span>KON 13 supplier plan · {proposition.number}</span>
           <span>{proposition.preparedFor}</span>
         </div>
 
@@ -115,24 +115,8 @@ export default function NigeriaAngolaPropositionPage() {
               Nigeria<br />
               <em>×</em> Angola
             </h1>
-            <p className={`${styles.heroSubtitle} font-display`}>
-              {proposition.subtitle}.
-              <span
-                style={{
-                  display: "block",
-                  maxWidth: "640px",
-                  marginTop: "18px",
-                  color: "rgba(255,255,255,0.56)",
-                  fontFamily: "var(--font-ui)",
-                  fontSize: "clamp(13px, 1.15vw, 17px)",
-                  fontWeight: 500,
-                  letterSpacing: "-0.01em",
-                  lineHeight: 1.45,
-                }}
-              >
-                {proposition.summary}
-              </span>
-            </p>
+            <p className={`${styles.heroSubtitle} font-display`}>{proposition.subtitle}.</p>
+            <p className={styles.heroSummary}>{proposition.summary}</p>
           </div>
           <CorridorField />
         </div>
@@ -140,15 +124,15 @@ export default function NigeriaAngolaPropositionPage() {
         <div className={styles.coverRail} aria-label="Open the proposal">
           <a href="#mandate">
             <div>
-              <span>What we are proposing</span>
-              <strong className="font-display">{proposition.line}</strong>
+              <span>Outcome</span>
+              <strong className="font-display">30 days · 2 options</strong>
             </div>
             <Icon name="arrow" />
           </a>
           <a href="#model">
             <div>
-              <span>How it works</span>
-              <strong className="font-display">Understand · Find · Check · Present</strong>
+              <span>Method</span>
+              <strong className="font-display">Need · Search · Verify · Pair</strong>
             </div>
             <Icon name="arrow" />
           </a>
@@ -157,7 +141,7 @@ export default function NigeriaAngolaPropositionPage() {
 
       <section className={styles.mandate} id="mandate" aria-labelledby="mandate-title">
         <div className={styles.shell}>
-          <div className={styles.sectionLabel}>The proposal</div>
+          <div className={styles.sectionLabel}>Plan</div>
           <h2 className={`${styles.displayTitle} font-display`} id="mandate-title">{proposition.mandate}</h2>
 
           <div className={styles.mandateGrid}>
@@ -177,9 +161,9 @@ export default function NigeriaAngolaPropositionPage() {
       <section className={styles.model} id="model" aria-labelledby="model-title">
         <div className={styles.shell}>
           <div className={styles.sectionHeader}>
-            <div className={styles.sectionLabel}>How it works</div>
+            <div className={styles.sectionLabel}>Process</div>
             <h2 className={`${styles.sectionTitle} font-display`} id="model-title">
-              Oando leads the block.<br />We build the supplier network around it.
+              Oando sets the need.<br />Dyrane builds the options.
             </h2>
           </div>
 
@@ -193,7 +177,7 @@ export default function NigeriaAngolaPropositionPage() {
             ))}
           </div>
 
-          <div className={styles.flow} aria-label="Four-step supplier partnership process">
+          <div className={styles.flow} aria-label="Four-step supplier process">
             {proposition.flow.map(([index, title, detail]) => (
               <div className={styles.flowStep} key={index}>
                 <span>{index}</span>
@@ -204,7 +188,7 @@ export default function NigeriaAngolaPropositionPage() {
           </div>
 
           <div className={styles.lanes}>
-            <div className={styles.sectionLabel}>Where we start</div>
+            <div className={styles.sectionLabel}>Priority services</div>
             <div className={styles.laneWords}>
               {proposition.lanes.map((lane) => <span className="font-display" key={lane}>{lane}</span>)}
             </div>
@@ -215,9 +199,9 @@ export default function NigeriaAngolaPropositionPage() {
       <section className={styles.sprint} id="sprint" aria-labelledby="sprint-title">
         <div className={styles.shell}>
           <div className={styles.sectionHeader}>
-            <div className={styles.sectionLabel}>The 30-day plan</div>
+            <div className={styles.sectionLabel}>30 days</div>
             <h2 className={`${styles.sectionTitle} font-display`} id="sprint-title">
-              Four weeks<br />to ready options.
+              30 days.<br />Two options.
             </h2>
           </div>
 
@@ -232,7 +216,7 @@ export default function NigeriaAngolaPropositionPage() {
             ))}
           </div>
 
-          <div className={styles.scorecard} aria-label="What Dyrane will deliver">
+          <div className={styles.scorecard} aria-label="Deliverables">
             {proposition.scorecard.map(([value, label]) => (
               <div key={label}>
                 <strong className="font-display">{value}</strong>
@@ -243,8 +227,8 @@ export default function NigeriaAngolaPropositionPage() {
 
           <div className={styles.governance}>
             <div>
-              <div className={styles.sectionLabel}>Minimum standards</div>
-              <h3 className="font-display">Every company must be real, safe and able to do the work.</h3>
+              <div className={styles.sectionLabel}>Checks</div>
+              <h3 className="font-display">Verified.<br />Safe.<br />Capable.</h3>
             </div>
             <ul>
               {proposition.gates.map((gate) => <li key={gate}><Icon name="check" size={18} />{gate}</li>)}
@@ -256,19 +240,19 @@ export default function NigeriaAngolaPropositionPage() {
       <section className={styles.decision} id="decision" aria-labelledby="decision-title">
         <div className={styles.shell}>
           <div className={styles.decisionHero}>
-            <div className={styles.sectionLabel}>The ask</div>
+            <div className={styles.sectionLabel}>Decision</div>
             <h2 className={`${styles.decisionTitle} font-display`} id="decision-title">{proposition.decision.title}</h2>
             <p>{proposition.decision.return}</p>
           </div>
 
           <div className={styles.decisionGrid}>
             <div className={styles.inputs}>
-              <span>What we need from Oando</span>
+              <span>From Oando</span>
               {proposition.decision.inputs.map((input) => <strong className="font-display" key={input}>{input}</strong>)}
             </div>
 
             <div className={styles.roles}>
-              <span>Who does what</span>
+              <span>Roles</span>
               {proposition.roles.map(([name, role]) => (
                 <div key={name}>
                   <b>{name}</b>
@@ -279,7 +263,7 @@ export default function NigeriaAngolaPropositionPage() {
           </div>
 
           <div className={styles.commercial}>
-            <div className={styles.sectionLabel}>How Dyrane is paid</div>
+            <div className={styles.sectionLabel}>Fees</div>
             <div className={styles.commercialRows}>
               {proposition.commercial.map(([label, value]) => (
                 <div key={label}>
@@ -291,9 +275,9 @@ export default function NigeriaAngolaPropositionPage() {
           </div>
 
           <div className={styles.guardrail}>
-            <strong className="font-display">Oando keeps procurement control.</strong>
-            <strong className="font-display">Every partner is independently checked.</strong>
-            <strong className="font-display">No supplier is promised a contract.</strong>
+            <strong className="font-display">Oando decides.</strong>
+            <strong className="font-display">Partners verified.</strong>
+            <strong className="font-display">No contracts promised.</strong>
           </div>
         </div>
       </section>
@@ -301,8 +285,8 @@ export default function NigeriaAngolaPropositionPage() {
       <section className={styles.sources} id="sources" aria-labelledby="sources-title">
         <div className={styles.shell}>
           <div className={styles.sectionHeader}>
-            <div className={styles.sectionLabel}>Evidence</div>
-            <h2 className={`${styles.sectionTitle} font-display`} id="sources-title">Why this proposal is timely.</h2>
+            <div className={styles.sectionLabel}>Sources</div>
+            <h2 className={`${styles.sectionTitle} font-display`} id="sources-title">The basis.</h2>
           </div>
 
           <div className={styles.sourceList}>
@@ -319,9 +303,9 @@ export default function NigeriaAngolaPropositionPage() {
           </div>
 
           <footer className={styles.footer}>
-            <Link href="/people/alex-irune">Return to Alex Irune</Link>
-            <span>Dyrane Strategic Ventures · KON 13 supplier plan</span>
-            <a href="#cover">Back to cover ↑</a>
+            <Link href="/people/alex-irune">Alex Irune</Link>
+            <span>Dyrane · KON 13 plan</span>
+            <a href="#cover">Top ↑</a>
           </footer>
         </div>
       </section>
