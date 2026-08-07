@@ -97,7 +97,7 @@ export function PublicRooms({ rooms }: PublicRoomsProps) {
           ))}
         </div>
 
-        <p className={styles.boundary}>Public events only · no inferred routine · every room opens to evidence.</p>
+        <p className={styles.boundary}>Lagos · Abuja · Cape Town</p>
       </div>
     </section>
   );
