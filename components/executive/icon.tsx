@@ -9,7 +9,9 @@ export type IconName =
   | "linkedin"
   | "location"
   | "mail"
+  | "pause"
   | "phone"
+  | "play"
   | "source"
   | "ticket"
   | "users";
@@ -92,10 +94,23 @@ export function Icon({ name, size = 18, ...props }: IconProps) {
           <path d="m4.5 7 7.5 6 7.5-6" />
         </svg>
       );
+    case "pause":
+      return (
+        <svg {...common}>
+          <rect x="7" y="5" width="3.5" height="14" rx="1" />
+          <rect x="13.5" y="5" width="3.5" height="14" rx="1" />
+        </svg>
+      );
     case "phone":
       return (
         <svg {...common}>
           <path d="M7.3 4.2 9.4 8l-2 2.2c1.3 2.8 3.5 5 6.3 6.3l2.2-2 3.8 2.1c.3.2.5.6.4 1-.4 2-2 3.2-4 3-7-.8-12-5.8-12.8-12.8-.2-2 1-3.7 3-4 .4-.1.8.1 1 .4Z" />
+        </svg>
+      );
+    case "play":
+      return (
+        <svg {...common}>
+          <path d="m9 6 9 6-9 6V6Z" />
         </svg>
       );
     case "source":
