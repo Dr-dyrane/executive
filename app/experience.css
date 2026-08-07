@@ -48,7 +48,7 @@ html[data-calm="true"] [data-experience-ambient] {
 }
 
 html[data-calm="true"] [data-experience-pulse],
-html[data-calm="true"] [data-experience-grain] {
+html[data-calm="true"] [data-experience-grain]::after {
   animation: none !important;
 }
 
