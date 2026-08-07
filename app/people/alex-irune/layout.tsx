@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LinkedInPulsePortal } from "@/components/executive/linkedin-pulse-portal";
 import { alexIruneIssue } from "@/content/people/alex-irune";
 
 const { editorial, profile } = alexIruneIssue;
@@ -12,11 +13,11 @@ export const metadata: Metadata = {
     "Oando Energy Resources",
     "Nigerian energy",
     "executive profile",
-    "Dyrane Executive",
+    "Dyrane Xclusive",
   ],
   openGraph: {
     type: "profile",
-    title: `${profile.name} · Dyrane Executive Issue ${editorial.issue}`,
+    title: `${profile.name} · Dyrane Xclusive Issue ${editorial.issue}`,
     description: profile.thesis,
     images: [
       {
@@ -27,12 +28,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} · Dyrane Executive`,
+    title: `${profile.name} · Dyrane Xclusive`,
     description: profile.thesis,
     images: [editorial.hero.src],
   },
 };
 
 export default function AlexIruneLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return children;
+  return (
+    <>
+      {children}
+      <LinkedInPulsePortal />
+    </>
+  );
 }
