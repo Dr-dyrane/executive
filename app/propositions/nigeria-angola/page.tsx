@@ -47,13 +47,13 @@ function CorridorField() {
         <path className={styles.routeGhost} d="M174 176C248 164 282 220 344 270C418 330 438 432 572 468" />
         <path className={styles.route} d="M174 176C248 164 282 220 344 270C418 330 438 432 572 468" />
 
-        <g className={styles.nodeNigeria} transform="translate(174 176)">
+        <g transform="translate(174 176)">
           <circle r="45" fill="url(#node-glow)" opacity="0.34" />
           <circle r="8" fill="#7ce5b5" filter="url(#soft-glow)" />
           <circle r="3" fill="#f6fff9" />
         </g>
 
-        <g className={styles.nodeAngola} transform="translate(572 468)">
+        <g transform="translate(572 468)">
           <circle r="56" fill="url(#node-glow)" opacity="0.42" />
           <circle r="9" fill="#e98960" filter="url(#soft-glow)" />
           <circle r="3" fill="#fff7f1" />
