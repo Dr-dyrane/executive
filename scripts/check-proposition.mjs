@@ -3,9 +3,10 @@ import { readFile } from "node:fs/promises";
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-const [page, styles, content, layout, ogImage, home] = await Promise.all([
+const [route, page, styles, content, layout, ogImage, home] = await Promise.all([
   read("app/propositions/nigeria-angola/page.tsx"),
-  read("app/propositions/nigeria-angola/page.module.css"),
+  read("app/propositions/nigeria-angola/proposition-page.tsx"),
+  read("app/propositions/nigeria-angola/proposition.module.css"),
   read("content/propositions/nigeria-angola.ts"),
   read("app/propositions/nigeria-angola/layout.tsx"),
   read("app/propositions/nigeria-angola/opengraph-image.tsx"),
@@ -17,6 +18,7 @@ const sourceUrls = [...content.matchAll(/href:\s*"(https:\/\/[^\"]+)"/g)].map((m
 const repeatedSourceUrls = sourceUrls.filter((url, index) => sourceUrls.indexOf(url) !== index);
 
 const checks = [
+  ["route exports the strategic page", route.includes('export { default } from "./proposition-page"')],
   ["route is linked from the root cover", home.includes('/propositions/nigeria-angola')],
   ["brief is excluded from search indexing", layout.includes("index: false") && layout.includes("follow: false")],
   ["all PRD chapters exist", requiredSections.every((id) => page.includes(`id=\"${id}\"`))],
