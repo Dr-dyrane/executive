@@ -7,6 +7,7 @@ import "./accessibility.css";
 import "./experience.css";
 import "./xclusive.css";
 import "./mobile.css";
+import "./lumen.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
