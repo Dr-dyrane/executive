@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LinkedInPulsePortal } from "@/components/executive/linkedin-pulse-portal";
+import { MobileAccessPortal } from "@/components/executive/mobile-access-portal";
 import { alexIruneIssue } from "@/content/people/alex-irune";
 
 const { editorial, profile } = alexIruneIssue;
@@ -38,6 +39,7 @@ export default function AlexIruneLayout({ children }: Readonly<{ children: React
   return (
     <>
       {children}
+      <MobileAccessPortal />
       <LinkedInPulsePortal />
     </>
   );
