@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "check:images": "node scripts/check-images.mjs",
-    "build": "npm run check:images && next build",
+    "check:experience": "node scripts/check-experience.mjs",
+    "check": "npm run check:experience && npm run check:images",
+    "build": "npm run check && next build",
     "start": "next start",
     "lint": "next lint"
   },
