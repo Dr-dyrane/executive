@@ -14,18 +14,12 @@ export type IssueSection = {
 type IssueExperienceProps = {
   sections: readonly IssueSection[];
   issueLabel: string;
-  sourceCount: number;
-  mediaCount: number;
   showDock?: boolean;
 };
-
-const CALM_STORAGE_KEY = "dyrane-executive-calm";
 
 export function IssueExperience({
   sections,
   issueLabel,
-  sourceCount,
-  mediaCount,
   showDock = true,
 }: IssueExperienceProps) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "cover");
@@ -37,19 +31,31 @@ export function IssueExperience({
   );
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const storedCalm = window.localStorage.getItem(CALM_STORAGE_KEY);
-    setCalm(storedCalm === null ? reducedMotion : storedCalm === "true");
+    const root = document.documentElement;
+    root.dataset.calm = "false";
+    root.dataset.experienceReady = "true";
+
+    return () => {
+      delete root.dataset.calm;
+      delete root.dataset.experienceReady;
+    };
   }, []);
 
   useEffect(() => {
-    document.documentElement.dataset.calm = String(calm);
-    window.localStorage.setItem(CALM_STORAGE_KEY, String(calm));
+    const root = document.documentElement;
+    root.dataset.calm = String(calm);
+
+    if (calm) {
+      document
+        .querySelectorAll<HTMLElement>("[data-experience-root] [data-reveal-item='true']")
+        .forEach((target) => {
+          target.dataset.inView = "true";
+        });
+    }
   }, [calm]);
 
   useEffect(() => {
     const root = document.documentElement;
-    root.dataset.experienceReady = "true";
 
     const updateScroll = () => {
       const scrollable = Math.max(root.scrollHeight - window.innerHeight, 1);
@@ -77,7 +83,6 @@ export function IssueExperience({
       window.removeEventListener("scroll", updateScroll);
       window.removeEventListener("resize", updateScroll);
       window.removeEventListener("pointermove", updatePointer);
-      delete root.dataset.experienceReady;
     };
   }, [calm]);
 
@@ -103,17 +108,17 @@ export function IssueExperience({
 
   useEffect(() => {
     const targets = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "[data-experience-root] section:not(#cover), [data-experience-root] article",
-      ),
+      document.querySelectorAll<HTMLElement>("[data-experience-root] section:not(#cover)"),
     );
 
-    targets.forEach((target) => target.dataset.revealItem = "true");
+    targets.forEach((target) => {
+      target.dataset.revealItem = "true";
+      if (calm || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        target.dataset.inView = "true";
+      }
+    });
 
     if (calm || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      targets.forEach((target) => {
-        target.dataset.inView = "true";
-      });
       return;
     }
 
@@ -125,7 +130,7 @@ export function IssueExperience({
           observer.unobserve(entry.target);
         });
       },
-      { rootMargin: "0px 0px -9%", threshold: 0.08 },
+      { rootMargin: "0px 0px -8%", threshold: 0.04 },
     );
 
     targets.forEach((target) => observer.observe(target));
@@ -173,26 +178,16 @@ export function IssueExperience({
             })}
           </nav>
 
-          <div className={styles.dockMeta}>
-            <a href="#sources" title="Open source index" aria-label={`${sourceCount} public sources`}>
-              <Icon name="source" size={15} />
-              <span>{sourceCount}</span>
-            </a>
-            <span title={`${mediaCount} media positions checked`}>
-              <Icon name="check" size={15} />
-              <span>{mediaCount}</span>
-            </span>
-          </div>
-
           <button
             className={`${styles.calmButton} ${calm ? styles.calmButtonActive : ""}`}
             type="button"
             aria-pressed={calm}
             onClick={() => setCalm((value) => !value)}
-            title={calm ? "Restore cinematic motion" : "Reduce motion and lighting"}
+            title={calm ? "Switch to live mode" : "Switch to calm mode"}
+            aria-label={calm ? "Switch to live mode" : "Switch to calm mode"}
           >
-            <Icon name={calm ? "play" : "pause"} size={15} />
-            <span>{calm ? "Live" : "Calm"}</span>
+            <Icon name={calm ? "pause" : "play"} size={15} />
+            <span>{calm ? "Calm" : "Live"}</span>
           </button>
 
           <div className={styles.currentChapter} aria-live="polite">
