@@ -3,6 +3,7 @@ import { Icon } from "@/components/executive/icon";
 import { IssueExperience } from "@/components/executive/issue-experience";
 import { SourceImage } from "@/components/executive/source-image";
 import { alexIruneEditorial } from "@/content/people/alex-irune/editorial";
+import { alexIrunePresentation } from "@/content/people/alex-irune/presentation";
 import styles from "./home.module.css";
 
 const coverSections = [{ id: "cover", label: "Cover", icon: "compass" }] as const;
@@ -10,6 +11,7 @@ const coverSections = [{ id: "cover", label: "Cover", icon: "compass" }] as cons
 export default function HomePage() {
   const editorial = alexIruneEditorial;
   const hero = editorial.hero;
+  const presentation = alexIrunePresentation;
 
   return (
     <main
@@ -21,8 +23,6 @@ export default function HomePage() {
       <IssueExperience
         sections={coverSections}
         issueLabel={`Issue ${editorial.issue}`}
-        sourceCount={editorial.coverLines.length + 1}
-        mediaCount={editorial.visualStories.length}
         showDock={false}
       />
 
@@ -38,11 +38,10 @@ export default function HomePage() {
           eager
         />
         <div className={styles.shade} />
-        <div className={`${styles.masthead} font-display`}>Dyrane Executive</div>
         <div className={styles.issue}>
           Issue {editorial.issue}<br />
           {editorial.date}<br />
-          Public-source edition
+          {presentation.permission}
         </div>
         <h1 className={`${styles.title} font-display`} id="issue-title">
           <small>{hero.label}</small>
@@ -75,9 +74,9 @@ export default function HomePage() {
         </div>
       </section>
       <footer className={styles.footer}>
-        <strong>Issue 001 is live</strong>
-        <span>{editorial.visualStories.length} verified visual positions</span>
-        <span>Open the cover →</span>
+        <strong>{presentation.platform}</strong>
+        <span>{presentation.permission}</span>
+        <span>Open cover →</span>
       </footer>
     </main>
   );
