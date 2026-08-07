@@ -1,4 +1,5 @@
 import { Icon } from "@/components/executive/icon";
+import { SourceImage } from "@/components/executive/source-image";
 import type { alexIruneLinkedIn } from "@/content/people/alex-irune/linkedin";
 import styles from "./linkedin-pulse.module.css";
 
@@ -6,73 +7,88 @@ type LinkedInPulseProps = {
   data: typeof alexIruneLinkedIn;
 };
 
+const layoutClass = {
+  lead: styles.storyLead,
+  portrait: styles.storyPortrait,
+  wide: styles.storyWide,
+  split: styles.storySplit,
+  finale: styles.storyFinale,
+} as const;
+
 export function LinkedInPulse({ data }: LinkedInPulseProps) {
   return (
-    <section className={styles.panel} aria-labelledby="linkedin-pulse-title">
-      <header className={styles.header}>
-        <div className={styles.brand}>
-          <Icon name="linkedin" size={20} />
-          <span>LinkedIn</span>
-        </div>
-        <a className={styles.profileLink} href={data.profile.href} target="_blank" rel="noreferrer">
-          Open profile <Icon name="arrow" size={16} />
-        </a>
-      </header>
-
-      <div className={styles.lead}>
-        <h2 className="font-display" id="linkedin-pulse-title">Ideas in motion.</h2>
-        <div className={styles.stats} aria-label={`LinkedIn profile snapshot observed ${data.profile.observed}`}>
-          <div>
-            <strong className="font-display">{data.profile.followers}</strong>
-            <span>followers</span>
+    <section className={styles.signal} aria-labelledby="linkedin-signal-title">
+      <div className={styles.inner}>
+        <header className={styles.header}>
+          <div className={styles.brand}>
+            <Icon name="linkedin" size={20} />
+            <span>LinkedIn / Signal</span>
           </div>
-          <div>
-            <strong className="font-display">{data.profile.connections}</strong>
-            <span>connections</span>
-          </div>
-          <div>
-            <strong className="font-display">{data.profile.articles}</strong>
-            <span>articles</span>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.themes} aria-label="Recurring LinkedIn themes">
-        {data.themes.map((theme) => <span key={theme}>{theme}</span>)}
-      </div>
-
-      <div className={styles.feed}>
-        {data.posts.map((post, index) => (
           <a
-            className={`${styles.post} ${index === 0 ? styles.featured : ""}`}
-            href={post.href}
+            className={styles.profileLink}
+            href={data.profile.href}
             target="_blank"
             rel="noreferrer"
-            key={`${post.period}-${post.title}`}
+            aria-label={`Open ${data.profile.name} on LinkedIn`}
           >
-            <div className={styles.postMeta}>
-              <span>{post.period}</span>
-              <span>{post.theme}</span>
-            </div>
-            <h3 className="font-display">{post.title}</h3>
-            <p>{post.deck}</p>
-            <span className={styles.postArrow} aria-hidden="true"><Icon name="arrow" /></span>
+            <span>Profile</span>
+            <Icon name="arrow" size={17} />
           </a>
-        ))}
-      </div>
+        </header>
 
-      <footer className={styles.network}>
-        <div className={styles.networkLabel}>Public conversations</div>
-        <div className={styles.people}>
-          {data.people.map((person) => (
-            <a href={person.href} target="_blank" rel="noreferrer" key={person.name}>
-              <strong className="font-display">{person.name}</strong>
-              <span>{person.context}</span>
-            </a>
-          ))}
+        <div className={styles.titleStage}>
+          <h2 className="font-display" id="linkedin-signal-title">
+            <span>Signal.</span>
+            <em>Received.</em>
+          </h2>
+          <div className={styles.orbit} aria-hidden="true" />
         </div>
-        <small>Snapshot observed {data.profile.observed}. Counts may change on LinkedIn.</small>
-      </footer>
+
+        <div className={styles.feed} aria-label="Selected LinkedIn stories">
+          {data.stories.map((story) => {
+            const mediaClass = story.media.length === 3
+              ? styles.mediaTriple
+              : story.media.length === 2
+                ? styles.mediaDouble
+                : styles.mediaSingle;
+
+            return (
+              <a
+                className={`${styles.story} ${layoutClass[story.layout]}`}
+                href={story.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${story.title} Open LinkedIn post.`}
+                key={`${story.period}-${story.title}`}
+              >
+                <div className={`${styles.media} ${mediaClass}`}>
+                  {story.media.map((item, index) => (
+                    <SourceImage
+                      src={item.src}
+                      fallbackSrcs={item.fallbackSrcs}
+                      alt={item.alt}
+                      className={styles.image}
+                      fallbackClassName={styles.imageFallback}
+                      fallbackLabel={story.signal}
+                      style={{ objectPosition: item.position }}
+                      key={`${story.title}-${index}`}
+                    />
+                  ))}
+                </div>
+                <div className={styles.shade} />
+                <div className={styles.meta}>
+                  <span>{story.period}</span>
+                  <span>{story.signal}</span>
+                </div>
+                <h3 className="font-display">{story.title}</h3>
+                <span className={styles.open} aria-hidden="true">
+                  <Icon name="arrow" size={19} />
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
