@@ -1,0 +1,805 @@
+/* Mobile is a distinct reading mode, not a compressed desktop canvas. */
+[data-mobile-access-host] {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  html {
+    scroll-padding-top: 68px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
+
+  main[data-experience-root] {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: calc(86px + env(safe-area-inset-bottom));
+    overflow: clip;
+  }
+
+  main[data-experience-root] > header {
+    height: calc(56px + env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
+    background: rgba(7, 7, 7, 0.42) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(2px) saturate(1.08) !important;
+    -webkit-backdrop-filter: blur(2px) saturate(1.08) !important;
+  }
+
+  main[data-experience-root] > header > div {
+    width: calc(100% - 28px) !important;
+    height: 56px !important;
+    margin-inline: auto !important;
+  }
+
+  main[data-experience-root] > header nav {
+    display: none !important;
+  }
+
+  main[data-experience-root] > header a:first-child {
+    max-width: 62vw;
+    overflow: hidden;
+    font-size: 10px !important;
+    letter-spacing: 0.17em !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Cover: one decisive image, then a thumb-readable cover-line rail. */
+  main[data-experience-root] > #cover {
+    min-height: max(760px, 100svh) !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  main[data-experience-root] > #cover img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  main[data-experience-root] > #cover h1 {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: calc(214px + env(safe-area-inset-bottom)) !important;
+    max-width: 94vw !important;
+    font-size: clamp(58px, 18.5vw, 92px) !important;
+    line-height: 0.82 !important;
+    letter-spacing: -0.065em !important;
+    text-wrap: balance;
+  }
+
+  main[data-experience-root] > #cover h1 small,
+  main[data-experience-root] > #cover h1 > span {
+    max-width: 82vw;
+    margin-bottom: 12px !important;
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0.15em !important;
+  }
+
+  main[data-experience-root] > #cover > div:last-of-type {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    padding: 0 16px 2px !important;
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+  }
+
+  main[data-experience-root] > #cover > div:last-of-type::-webkit-scrollbar {
+    display: none;
+  }
+
+  main[data-experience-root] > #cover > div:last-of-type > a {
+    flex: 0 0 min(78vw, 306px);
+    min-height: 64px !important;
+    padding: 12px 14px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 12px !important;
+    border-radius: 18px !important;
+    color: #fff;
+    background: rgba(5, 5, 5, 0.42) !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(2px) saturate(1.1);
+    -webkit-backdrop-filter: blur(2px) saturate(1.1);
+    scroll-snap-align: start;
+  }
+
+  main[data-experience-root] > #cover > div:last-of-type > a small,
+  main[data-experience-root] > #cover > div:last-of-type > a span:first-child {
+    font-size: 8px !important;
+    letter-spacing: 0.13em !important;
+  }
+
+  main[data-experience-root] > #cover > div:last-of-type > a strong {
+    font-size: 17px !important;
+    line-height: 1.02 !important;
+  }
+
+  main[data-experience-root] > #cover a[aria-label^="Open issue"] {
+    flex-basis: 118px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    border-radius: 18px !important;
+    background: rgba(238, 233, 223, 0.94) !important;
+    color: #090909 !important;
+  }
+
+  main[data-experience-root] > #cover a[aria-label^="Open issue"]::before {
+    content: "Open";
+    margin-right: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  /* Publication strip becomes a swipeable, low-noise metadata ribbon. */
+  [aria-label="Publication details"] {
+    width: 100% !important;
+    min-height: 62px !important;
+    padding: 0 14px !important;
+    display: flex !important;
+    gap: 24px !important;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  [aria-label="Publication details"]::-webkit-scrollbar {
+    display: none;
+  }
+
+  [aria-label="Publication details"] > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  /* Fast reachability arrives immediately after the cover. */
+  [data-mobile-access-host] {
+    display: block;
+    width: 100%;
+    padding: 10px 0 14px;
+    background: #090909;
+  }
+
+  [data-mobile-access] {
+    width: 100%;
+    padding: 0 14px 2px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  [data-mobile-access]::-webkit-scrollbar {
+    display: none;
+  }
+
+  [data-mobile-access] a {
+    flex: 0 0 auto;
+    min-width: 78px;
+    min-height: 56px;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 18px;
+    color: rgba(238, 233, 223, 0.82);
+    background: rgba(255, 255, 255, 0.055);
+    font-size: 9px;
+    font-weight: 650;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    scroll-snap-align: start;
+  }
+
+  [data-mobile-access] a:first-child {
+    color: #090909;
+    background: #eee9df;
+  }
+
+  /* Bottom chapter dock: thumb-first, labelled, scrollable, safe-area aware. */
+  aside[aria-label="Issue chapters"] {
+    left: 8px !important;
+    right: 8px !important;
+    top: auto !important;
+    bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    min-height: 64px !important;
+    padding: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transform: none !important;
+    border: 0 !important;
+    border-radius: 22px !important;
+    background: rgba(7, 7, 7, 0.58) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28) !important;
+    backdrop-filter: blur(2px) saturate(1.12) !important;
+    -webkit-backdrop-filter: blur(2px) saturate(1.12) !important;
+  }
+
+  aside[aria-label="Issue chapters"] > div:first-child,
+  aside[aria-label="Issue chapters"] > div[aria-live] {
+    display: none !important;
+  }
+
+  aside[aria-label="Issue chapters"] nav {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex !important;
+    gap: 4px !important;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  aside[aria-label="Issue chapters"] nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  aside[aria-label="Issue chapters"] nav a {
+    flex: 0 0 54px !important;
+    min-width: 54px !important;
+    min-height: 52px !important;
+    padding: 5px 3px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    border-radius: 16px !important;
+    scroll-snap-align: start;
+  }
+
+  aside[aria-label="Issue chapters"] nav a > span {
+    position: static !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    border: 0 !important;
+    color: currentColor !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-size: 7px !important;
+    line-height: 1 !important;
+    letter-spacing: 0.05em !important;
+    opacity: 0.78 !important;
+    transform: none !important;
+  }
+
+  aside[aria-label="Issue chapters"] button {
+    flex: 0 0 50px;
+    min-width: 50px !important;
+    min-height: 52px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+  }
+
+  /* Personal profile: one clear lead, then two-column facts. */
+  #profile {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 76px 0 84px !important;
+    grid-template-columns: 1fr !important;
+    gap: 42px !important;
+  }
+
+  #profile > div:first-child {
+    position: static !important;
+  }
+
+  #profile > div:first-child h2 {
+    margin-top: 18px !important;
+    font-size: clamp(52px, 16vw, 82px) !important;
+  }
+
+  #profile > div:last-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0 18px !important;
+  }
+
+  #profile > div:last-child > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  #profile > div:last-child > a,
+  #profile > div:last-child > div {
+    min-height: 132px !important;
+    padding: 20px 0 !important;
+  }
+
+  #profile strong {
+    font-size: clamp(22px, 7.4vw, 36px) !important;
+  }
+
+  /* Portfolio and facts become concise, swipeable editorial modules. */
+  #portfolio {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 82px 0 54px !important;
+  }
+
+  #portfolio > div {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  #portfolio h2 {
+    font-size: clamp(52px, 16vw, 84px) !important;
+    line-height: 0.88 !important;
+  }
+
+  #portfolio > div > div:last-child {
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  #portfolio > div > div:last-child > div {
+    flex: 0 0 min(72vw, 280px);
+    min-height: 64px;
+    padding: 14px;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    scroll-snap-align: start;
+  }
+
+  [aria-label="Profile facts"] {
+    width: 100% !important;
+    padding: 0 14px 84px !important;
+    display: flex !important;
+    gap: 12px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  [aria-label="Profile facts"]::-webkit-scrollbar {
+    display: none;
+  }
+
+  [aria-label="Profile facts"] > a {
+    flex: 0 0 min(78vw, 310px);
+    min-height: 178px !important;
+    padding: 22px !important;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.045);
+    scroll-snap-align: start;
+  }
+
+  /* Image story: a deliberate swipe reel instead of eight stacked desktop panels. */
+  section[aria-labelledby="visual-title"] {
+    width: 100% !important;
+    padding: 0 0 104px !important;
+  }
+
+  section[aria-labelledby="visual-title"] > div:first-child {
+    width: min(100% - 28px, 1280px);
+    margin-inline: auto;
+    padding-bottom: 34px;
+  }
+
+  section[aria-labelledby="visual-title"] > div:last-child {
+    padding: 0 14px 6px !important;
+    display: flex !important;
+    gap: 12px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 14px;
+    scrollbar-width: none;
+  }
+
+  section[aria-labelledby="visual-title"] > div:last-child::-webkit-scrollbar {
+    display: none;
+  }
+
+  section[aria-labelledby="visual-title"] > div:last-child > a {
+    flex: 0 0 min(86vw, 430px) !important;
+    min-height: min(68svh, 610px) !important;
+    border-radius: 26px;
+    scroll-snap-align: center;
+  }
+
+  /* Career keeps chronology; Now becomes a headline reel. */
+  #career > div {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 84px 0 !important;
+  }
+
+  #career [class*="sectionHeader"] {
+    margin-bottom: 34px !important;
+  }
+
+  #career a {
+    grid-template-columns: 48px 1fr 28px !important;
+    gap: 12px !important;
+    padding: 22px 0 !important;
+    align-items: start !important;
+  }
+
+  #career a > span:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 10px !important;
+  }
+
+  #career a > h3 {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: clamp(27px, 8.4vw, 42px) !important;
+  }
+
+  #career a > svg {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  #now {
+    width: 100% !important;
+    padding: 94px 0 106px !important;
+  }
+
+  #now > div:first-child {
+    width: min(100% - 28px, 1280px);
+    margin-inline: auto;
+  }
+
+  #now > div:last-child {
+    padding: 0 14px 6px !important;
+    display: flex !important;
+    gap: 12px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  #now > div:last-child::-webkit-scrollbar {
+    display: none;
+  }
+
+  #now article {
+    flex: 0 0 min(84vw, 390px) !important;
+    min-height: 360px !important;
+    padding: 24px !important;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.045);
+    scroll-snap-align: center;
+  }
+
+  #now article:first-child h3,
+  #now article h3 {
+    font-size: clamp(38px, 12vw, 62px) !important;
+  }
+
+  /* Access: fit contact data, make actions thumb-readable, keep LinkedIn editorial. */
+  #access > div {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 82px 0 96px !important;
+  }
+
+  #access [class*="contactWord"] {
+    margin-top: 26px !important;
+    font-size: clamp(35px, 10.4vw, 58px) !important;
+    line-height: 0.92 !important;
+    overflow-wrap: anywhere;
+  }
+
+  #access [class*="accessMeta"] {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+    margin-top: 48px !important;
+  }
+
+  #access [aria-label="Contact and social links"] {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  #access [aria-label="Contact and social links"] a {
+    flex: 0 0 auto;
+    min-width: 104px !important;
+    min-height: 52px !important;
+    scroll-snap-align: start;
+  }
+
+  #access [aria-label="Calendar"] {
+    margin-top: 54px !important;
+  }
+
+  #access [aria-label="Calendar"] a {
+    grid-template-columns: 1fr auto !important;
+    gap: 10px 16px !important;
+    padding: 20px 0 !important;
+  }
+
+  #access [aria-label="Calendar"] a > span {
+    grid-column: 1;
+    font-size: 9px !important;
+  }
+
+  #access [aria-label="Calendar"] a > strong {
+    grid-column: 1;
+    font-size: clamp(25px, 7.8vw, 38px) !important;
+  }
+
+  #access [aria-label="Calendar"] a > svg {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  /* LinkedIn becomes a touch-native magazine rail. */
+  [data-linkedin-pulse-host] {
+    width: calc(100% + 28px);
+    margin-left: -14px;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] {
+    margin: 64px 0 24px !important;
+    padding: 24px 14px 30px !important;
+    border-radius: 0 !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > header {
+    padding-inline: 4px;
+  }
+
+  #linkedin-pulse-title {
+    font-size: clamp(56px, 17vw, 88px) !important;
+    line-height: 0.82 !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(1) {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    margin-top: 58px !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(1) > div {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(1) > div > div {
+    min-height: 84px !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(2) {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(2) > span {
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.055);
+    font-size: 14px !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(2) > span::after {
+    content: none !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(3) {
+    padding: 0 2px 8px !important;
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(3) > a {
+    flex: 0 0 min(84vw, 380px) !important;
+    min-height: 360px !important;
+    scroll-snap-align: center;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > footer > div:nth-child(2) {
+    padding-bottom: 6px;
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > footer > div:nth-child(2) > a {
+    flex: 0 0 min(68vw, 260px);
+    min-height: 110px !important;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.045);
+    scroll-snap-align: start;
+  }
+
+  /* Voice, rooms, networks and evidence keep the same mobile reading grammar. */
+  section[aria-labelledby="social-title"] {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 88px 0 104px !important;
+  }
+
+  section[aria-labelledby="social-title"] a {
+    grid-template-columns: 42px minmax(0, 1fr) 30px !important;
+    gap: 12px !important;
+    padding: 22px 0 !important;
+  }
+
+  section[aria-labelledby="social-title"] h3 {
+    font-size: clamp(38px, 11.5vw, 60px) !important;
+    overflow-wrap: anywhere;
+  }
+
+  #rooms > div {
+    width: 100% !important;
+  }
+
+  #rooms > div > header {
+    width: min(100% - 28px, 1280px);
+    margin-inline: auto;
+    padding-inline: 0 !important;
+  }
+
+  #rooms > div > div {
+    padding: 0 14px 8px !important;
+    display: flex !important;
+    gap: 12px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  #rooms > div > div::-webkit-scrollbar {
+    display: none;
+  }
+
+  #rooms article {
+    flex: 0 0 min(88vw, 410px) !important;
+    min-height: 520px !important;
+    padding: 24px !important;
+    scroll-snap-align: center;
+  }
+
+  #rooms article h3 {
+    font-size: clamp(38px, 12vw, 62px) !important;
+  }
+
+  #rooms article [aria-label$="participants"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  #rooms > div > p:last-child {
+    display: none;
+  }
+
+  #network > div {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 88px 0 !important;
+  }
+
+  #network [class*="nameWall"] {
+    gap: 10px 14px !important;
+    margin-top: 50px !important;
+  }
+
+  #network [class*="nameLink"] {
+    font-size: clamp(36px, 11vw, 58px) !important;
+  }
+
+  section[aria-labelledby="stakeholder-title"] {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 88px 0 !important;
+  }
+
+  section[aria-labelledby="stakeholder-title"] > div:last-child {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+    margin-top: 48px !important;
+  }
+
+  #sources {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 88px 0 42px !important;
+  }
+
+  #sources [class*="sourceList"] {
+    columns: 1 !important;
+    margin-top: 38px !important;
+  }
+
+  #sources a {
+    min-height: 64px;
+    padding: 16px 0 !important;
+  }
+
+  main[data-experience-root] > footer {
+    width: min(100% - 28px, 1280px) !important;
+    padding: 34px 0 calc(106px + env(safe-area-inset-bottom)) !important;
+    font-size: 8px !important;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    main[data-experience-root] a:hover,
+    main[data-experience-root] button:hover {
+      transform: none !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  main[data-experience-root] > #cover h1 {
+    font-size: clamp(54px, 18vw, 76px) !important;
+  }
+
+  #profile > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  #profile > div:last-child > :first-child {
+    grid-column: auto;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > header {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+
+  section[aria-labelledby="linkedin-pulse-title"] > header > a {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 620px) {
+  main[data-experience-root] > #cover {
+    min-height: 100svh !important;
+  }
+
+  main[data-experience-root] > #cover h1 {
+    bottom: 118px !important;
+    max-width: 58vw !important;
+    font-size: clamp(46px, 10vw, 72px) !important;
+  }
+
+  main[data-experience-root] > #cover > div:last-of-type > a {
+    flex-basis: min(44vw, 280px);
+    min-height: 54px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-mobile-access],
+  [aria-label="Publication details"],
+  section[aria-labelledby="visual-title"] > div:last-child,
+  #now > div:last-child,
+  #rooms > div > div,
+  section[aria-labelledby="linkedin-pulse-title"] > div:nth-of-type(3) {
+    scroll-behavior: auto;
+  }
+}
