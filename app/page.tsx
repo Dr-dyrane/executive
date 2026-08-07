@@ -76,7 +76,7 @@ export default function HomePage() {
       <footer className={styles.footer}>
         <strong>{presentation.platform}</strong>
         <span>{presentation.permission}</span>
-        <Link href="/propositions/nigeria-angola">KON 13 supplier plan →</Link>
+        <Link href="/propositions">Strategic ventures →</Link>
       </footer>
     </main>
   );
