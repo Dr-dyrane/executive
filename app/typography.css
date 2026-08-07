@@ -1,0 +1,18 @@
+:root {
+  --font-ui: var(--font-inter), "SF Pro Text", "SF Pro Display", Roboto, Arial, sans-serif;
+  --font-display: var(--font-dm-sans), "SF Pro Display", Inter, Roboto, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-ui);
+}
+
+.font-ui {
+  font-family: var(--font-ui) !important;
+}
+
+.font-display {
+  font-family: var(--font-display) !important;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 14;
+}
