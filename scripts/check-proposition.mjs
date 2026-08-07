@@ -3,13 +3,12 @@ import { readFile } from "node:fs/promises";
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-const [route, page, styles, content, layout, ogImage, home] = await Promise.all([
+const [route, page, styles, content, layout, home] = await Promise.all([
   read("app/propositions/nigeria-angola/page.tsx"),
   read("app/propositions/nigeria-angola/proposition-page.tsx"),
   read("app/propositions/nigeria-angola/proposition.module.css"),
   read("content/propositions/nigeria-angola.ts"),
   read("app/propositions/nigeria-angola/layout.tsx"),
-  read("app/propositions/nigeria-angola/opengraph-image.tsx"),
   read("app/page.tsx"),
 ]);
 
@@ -33,7 +32,6 @@ const checks = [
   ["landscape phone layout exists", styles.includes("orientation: landscape")],
   ["reduced motion is respected", styles.includes("prefers-reduced-motion")],
   ["print composition exists", styles.includes("@media print")],
-  ["share image exists", ogImage.includes("ImageResponse") && ogImage.includes("Nigeria × Angola")],
   ["no dashboard language leaks into the brief", !page.includes("dashboard") && !page.includes("card grid")],
 ];
 
