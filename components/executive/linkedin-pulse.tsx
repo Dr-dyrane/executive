@@ -17,7 +17,12 @@ const layoutClass = {
 
 export function LinkedInPulse({ data }: LinkedInPulseProps) {
   return (
-    <section className={styles.signal} aria-labelledby="linkedin-signal-title">
+    <section
+      className={styles.signal}
+      id="linkedin"
+      data-lumen-zone="signal"
+      aria-labelledby="linkedin-signal-title"
+    >
       <div className={styles.inner}>
         <header className={styles.header}>
           <div className={styles.brand}>
