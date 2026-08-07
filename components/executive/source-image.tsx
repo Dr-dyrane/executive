@@ -1,10 +1,11 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type SourceImageProps = {
   src: string;
+  fallbackSrcs?: readonly string[];
   alt: string;
   className?: string;
   fallbackClassName?: string;
@@ -15,6 +16,7 @@ type SourceImageProps = {
 
 export function SourceImage({
   src,
+  fallbackSrcs = [],
   alt,
   className,
   fallbackClassName,
@@ -22,9 +24,17 @@ export function SourceImage({
   eager = false,
   style,
 }: SourceImageProps) {
+  const candidates = [src, ...fallbackSrcs].filter((value, index, values) => value && values.indexOf(value) === index);
+  const sourceKey = candidates.join("|");
+  const [candidateIndex, setCandidateIndex] = useState(0);
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  useEffect(() => {
+    setCandidateIndex(0);
+    setFailed(false);
+  }, [sourceKey]);
+
+  if (failed || candidates.length === 0) {
     return (
       <div className={fallbackClassName} role="img" aria-label={alt}>
         <span>{fallbackLabel}</span>
@@ -35,14 +45,20 @@ export function SourceImage({
   return (
     <img
       className={className}
-      src={src}
+      src={candidates[candidateIndex]}
       alt={alt}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
       fetchPriority={eager ? "high" : "auto"}
       referrerPolicy="no-referrer"
       style={style}
-      onError={() => setFailed(true)}
+      onError={() => {
+        if (candidateIndex + 1 < candidates.length) {
+          setCandidateIndex(candidateIndex + 1);
+        } else {
+          setFailed(true);
+        }
+      }}
     />
   );
 }
