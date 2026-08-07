@@ -36,7 +36,7 @@ export function SourceImage({
 
   if (failed || candidates.length === 0) {
     return (
-      <div className={fallbackClassName} role="img" aria-label={alt}>
+      <div className={fallbackClassName} role="img" aria-label={alt} data-lumen-media-fallback>
         <span>{fallbackLabel}</span>
       </div>
     );
@@ -52,6 +52,7 @@ export function SourceImage({
       fetchPriority={eager ? "high" : "auto"}
       referrerPolicy="no-referrer"
       style={style}
+      data-lumen-media
       onError={() => {
         if (candidateIndex + 1 < candidates.length) {
           setCandidateIndex(candidateIndex + 1);
