@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import "./typography.css";
+import "./accessibility.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,8 +17,21 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Dyrane Executive",
-  description: "Evidence-backed executive intelligence profiles.",
+  title: {
+    default: "Dyrane Executive",
+    template: "%s · Dyrane Executive",
+  },
+  description: "Evidence-backed executive intelligence told as a living editorial issue.",
+  applicationName: "Dyrane Executive",
+  category: "editorial",
+};
+
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#090909" },
+    { media: "(prefers-color-scheme: light)", color: "#eee9df" },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
