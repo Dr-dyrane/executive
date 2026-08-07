@@ -24,7 +24,7 @@ export function PublicRooms({ rooms }: PublicRoomsProps) {
       <div className={styles.shell}>
         <header className={styles.header}>
           <div className={styles.kicker}>Public circuit</div>
-          <h2>The rooms.</h2>
+          <h2 className="font-display">The rooms.</h2>
         </header>
 
         <div className={styles.stage}>
@@ -43,7 +43,7 @@ export function PublicRooms({ rooms }: PublicRoomsProps) {
               </div>
 
               <div className={styles.format}>{room.format}</div>
-              <h3>{room.name}</h3>
+              <h3 className="font-display">{room.name}</h3>
 
               <div className={styles.placeLine}>
                 <span><Icon name="location" />{room.location}</span>
@@ -61,7 +61,7 @@ export function PublicRooms({ rooms }: PublicRoomsProps) {
                   {room.people.map((person) => (
                     <div className={styles.person} key={person.name}>
                       <small>{person.role}</small>
-                      <strong>{person.name}</strong>
+                      <strong className="font-display">{person.name}</strong>
                       <div className={styles.links}>
                         {person.links.map((link) => (
                           <a href={link.href} target="_blank" rel="noreferrer" key={`${person.name}-${link.label}`}>
