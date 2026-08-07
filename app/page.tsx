@@ -31,15 +31,19 @@ export default function HomePage() {
           Ainojie<br />Alex Irune
         </h1>
         <div className={styles.lines}>
-          {editorial.coverLines.map((line) => (
-            <a className={styles.line} href={line.href} target={line.href.startsWith("#") ? undefined : "_blank"} rel={line.href.startsWith("#") ? undefined : "noreferrer"} key={line.title}>
-              <div>
-                <span>{line.label}</span>
-                <strong>{line.title}</strong>
-              </div>
-              <Icon name="arrow" />
-            </a>
-          ))}
+          {editorial.coverLines.map((line) => {
+            const href = line.href.startsWith("#") ? `/people/alex-irune${line.href}` : line.href;
+            const external = href.startsWith("http");
+            return (
+              <a className={styles.line} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} key={line.title}>
+                <div>
+                  <span>{line.label}</span>
+                  <strong>{line.title}</strong>
+                </div>
+                <Icon name="arrow" />
+              </a>
+            );
+          })}
           <Link className={styles.open} href="/people/alex-irune" aria-label="Open issue 001">
             <Icon name="arrow" size={24} />
           </Link>
