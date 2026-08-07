@@ -6,7 +6,18 @@ async function read(path) {
   return readFile(new URL(path, root), "utf8");
 }
 
-const [profilePage, homePage, experience, experienceCss, accessibilityCss, layout, imageComponent] = await Promise.all([
+const [
+  profilePage,
+  homePage,
+  experience,
+  experienceCss,
+  accessibilityCss,
+  layout,
+  imageComponent,
+  loadingState,
+  errorState,
+  notFoundState,
+] = await Promise.all([
   read("app/people/alex-irune/page.tsx"),
   read("app/page.tsx"),
   read("components/executive/issue-experience.tsx"),
@@ -14,6 +25,9 @@ const [profilePage, homePage, experience, experienceCss, accessibilityCss, layou
   read("app/accessibility.css"),
   read("app/layout.tsx"),
   read("components/executive/source-image.tsx"),
+  read("app/loading.tsx"),
+  read("app/error.tsx"),
+  read("app/not-found.tsx"),
 ]);
 
 const checks = [
@@ -31,6 +45,9 @@ const checks = [
   ["global experience rules are loaded", layout.includes('import "./experience.css"')],
   ["accessibility defaults are loaded", layout.includes('import "./accessibility.css"')],
   ["image fallback chains exist", imageComponent.includes("fallbackSrcs") && imageComponent.includes("candidateIndex")],
+  ["loading state announces busy work", loadingState.includes("busy")],
+  ["error state has a retry path", errorState.includes("reset")],
+  ["not-found state has recovery routes", notFoundState.includes("Return to cover")],
 ];
 
 const failures = checks.filter(([, passed]) => !passed);
