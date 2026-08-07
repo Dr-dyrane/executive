@@ -5,15 +5,16 @@ import "./globals.css";
 import "./typography.css";
 import "./accessibility.css";
 import "./experience.css";
+import "./xclusive.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: "Dyrane Executive", template: "%s · Dyrane Executive" },
-  description: "Evidence-backed executive intelligence told as a living editorial issue.",
-  applicationName: "Dyrane Executive",
+  title: { default: "Dyrane Xclusive", template: "%s · Dyrane Xclusive" },
+  description: "Ainojie Alex Irune in technology, strategy and operatorship.",
+  applicationName: "Dyrane Xclusive",
   category: "editorial",
 };
 
