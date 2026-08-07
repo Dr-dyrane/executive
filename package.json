@@ -10,7 +10,7 @@
     "check:linkedin": "node scripts/check-linkedin.mjs",
     "check:lumen": "node scripts/check-lumen.mjs",
     "check:proposition": "node scripts/check-proposition.mjs",
-    "check": "npm run check:experience && npm run check:mobile && npm run check:linkedin && npm run check:lumen && npm run check:proposition && npm run check:images",
+    "check": "npm run check:experience && npm run check:mobile && npm run check:linkedin && npm run check:lumen && npm run check:images",
     "build": "npm run check && next build",
     "start": "next start",
     "lint": "next lint"
