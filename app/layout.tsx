@@ -1,27 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Inter } from "next/font/google";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 import "./typography.css";
 import "./accessibility.css";
 import "./experience.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Dyrane Executive",
-    template: "%s · Dyrane Executive",
-  },
+  metadataBase: new URL(siteUrl),
+  title: { default: "Dyrane Executive", template: "%s · Dyrane Executive" },
   description: "Evidence-backed executive intelligence told as a living editorial issue.",
   applicationName: "Dyrane Executive",
   category: "editorial",
