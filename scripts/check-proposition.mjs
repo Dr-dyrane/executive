@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-const [route, page, styles, compactStyles, content, layout, home] = await Promise.all([
+const [route, page, styles, compactStyles, content, layout, home, ventures] = await Promise.all([
   read("app/propositions/nigeria-angola/page.tsx"),
   read("app/propositions/nigeria-angola/proposition-page.tsx"),
   read("app/propositions/nigeria-angola/proposition.module.css"),
@@ -11,6 +11,7 @@ const [route, page, styles, compactStyles, content, layout, home] = await Promis
   read("content/propositions/nigeria-angola.ts"),
   read("app/propositions/nigeria-angola/layout.tsx"),
   read("app/page.tsx"),
+  read("app/propositions/page.tsx"),
 ]);
 
 const requiredSections = ["cover", "mandate", "model", "sprint", "decision", "sources"];
@@ -28,7 +29,8 @@ const forbiddenVerboseCopy = [
 
 const checks = [
   ["route exports the strategic page", route.includes('export { default } from "./proposition-page"')],
-  ["route is linked from the root cover", home.includes('/propositions/nigeria-angola') && home.includes("KON 13 supplier plan")],
+  ["root cover opens the venture portfolio", home.includes('href="/propositions"') && home.includes("Strategic ventures")],
+  ["venture index links the supplier plan", ventures.includes('href="/propositions/nigeria-angola"')],
   ["brief is excluded from search indexing", layout.includes("index: false") && layout.includes("follow: false")],
   ["all proposal chapters exist", requiredSections.every((id) => page.includes(`id=\"${id}\"`))],
   ["brief uses the shared issue experience", page.includes("IssueExperience") && page.includes("data-experience-root")],
@@ -44,6 +46,7 @@ const checks = [
   ["verbose copy is absent", forbiddenVerboseCopy.every((copy) => !page.includes(copy) && !content.includes(copy))],
   ["inline copy styling is removed", !page.includes("style={{")],
   ["overflow wrapping is enforced", compactStyles.includes("overflow-wrap: anywhere") && compactStyles.includes("min-width: 0")],
+  ["semantic text color is present", compactStyles.includes("Four-step supplier process") && compactStyles.includes("#72e5b7") && compactStyles.includes("#ed825c")],
   ["editorial headings balance safely", compactStyles.includes("text-wrap: balance")],
   ["phone type scale is constrained", compactStyles.includes("@media (max-width: 560px)") && compactStyles.includes("decisionTitle")],
   ["mobile breakpoint exists", styles.includes("@media (max-width: 900px)")],
