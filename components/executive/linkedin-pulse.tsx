@@ -1,7 +1,7 @@
 import { Icon } from "@/components/executive/icon";
 import { SourceImage } from "@/components/executive/source-image";
 import type { alexIruneLinkedIn } from "@/content/people/alex-irune/linkedin";
-import styles from "./linkedin-pulse.module.css";
+import styles from "./linkedin-signal.module.css";
 
 type LinkedInPulseProps = {
   data: typeof alexIruneLinkedIn;
