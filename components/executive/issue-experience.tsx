@@ -17,6 +17,82 @@ type IssueExperienceProps = {
   showDock?: boolean;
 };
 
+type LumenTone = {
+  primary: string;
+  secondary: string;
+  originX: string;
+  originY: string;
+  alpha: string;
+};
+
+const DEFAULT_LUMEN: LumenTone = {
+  primary: "216 173 104",
+  secondary: "255 244 222",
+  originX: "68%",
+  originY: "24%",
+  alpha: "0.18",
+};
+
+const LUMEN_TONES: Record<string, LumenTone> = {
+  cover: DEFAULT_LUMEN,
+  profile: {
+    primary: "255 244 222",
+    secondary: "216 173 104",
+    originX: "20%",
+    originY: "38%",
+    alpha: "0.15",
+  },
+  portfolio: {
+    primary: "238 244 248",
+    secondary: "216 173 104",
+    originX: "64%",
+    originY: "34%",
+    alpha: "0.13",
+  },
+  career: {
+    primary: "216 173 104",
+    secondary: "171 119 52",
+    originX: "18%",
+    originY: "48%",
+    alpha: "0.14",
+  },
+  now: {
+    primary: "234 183 93",
+    secondary: "255 234 186",
+    originX: "76%",
+    originY: "30%",
+    alpha: "0.22",
+  },
+  access: {
+    primary: "255 244 222",
+    secondary: "216 173 104",
+    originX: "56%",
+    originY: "40%",
+    alpha: "0.17",
+  },
+  rooms: {
+    primary: "232 168 92",
+    secondary: "133 84 47",
+    originX: "28%",
+    originY: "52%",
+    alpha: "0.17",
+  },
+  network: {
+    primary: "198 213 224",
+    secondary: "122 145 160",
+    originX: "72%",
+    originY: "42%",
+    alpha: "0.13",
+  },
+  sources: {
+    primary: "142 142 142",
+    secondary: "216 173 104",
+    originX: "50%",
+    originY: "70%",
+    alpha: "0.07",
+  },
+};
+
 export function IssueExperience({
   sections,
   issueLabel,
@@ -34,18 +110,43 @@ export function IssueExperience({
     const root = document.documentElement;
     root.dataset.calm = "false";
     root.dataset.experienceReady = "true";
+    root.dataset.lumenSection = sections[0]?.id ?? "cover";
 
     return () => {
       delete root.dataset.calm;
       delete root.dataset.experienceReady;
+      delete root.dataset.lumenSection;
+      [
+        "--lumen-primary",
+        "--lumen-secondary",
+        "--lumen-origin-x",
+        "--lumen-origin-y",
+        "--lumen-alpha",
+        "--lumen-shift-x",
+        "--lumen-shift-y",
+      ].forEach((property) => root.style.removeProperty(property));
     };
-  }, []);
+  }, [sections]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const tone = LUMEN_TONES[activeId] ?? DEFAULT_LUMEN;
+
+    root.dataset.lumenSection = activeId;
+    root.style.setProperty("--lumen-primary", tone.primary);
+    root.style.setProperty("--lumen-secondary", tone.secondary);
+    root.style.setProperty("--lumen-origin-x", tone.originX);
+    root.style.setProperty("--lumen-origin-y", tone.originY);
+    root.style.setProperty("--lumen-alpha", tone.alpha);
+  }, [activeId]);
 
   useEffect(() => {
     const root = document.documentElement;
     root.dataset.calm = String(calm);
 
     if (calm) {
+      root.style.setProperty("--lumen-shift-x", "0px");
+      root.style.setProperty("--lumen-shift-y", "0px");
       document
         .querySelectorAll<HTMLElement>("[data-experience-root] [data-reveal-item='true']")
         .forEach((target) => {
@@ -70,8 +171,11 @@ export function IssueExperience({
 
     const updatePointer = (event: PointerEvent) => {
       if (calm || event.pointerType === "touch") return;
-      root.style.setProperty("--ambient-x", `${event.clientX}px`);
-      root.style.setProperty("--ambient-y", `${event.clientY}px`);
+
+      const x = ((event.clientX / Math.max(window.innerWidth, 1)) - 0.5) * 12;
+      const y = ((event.clientY / Math.max(window.innerHeight, 1)) - 0.5) * 10;
+      root.style.setProperty("--lumen-shift-x", `${x.toFixed(2)}px`);
+      root.style.setProperty("--lumen-shift-y", `${y.toFixed(2)}px`);
     };
 
     updateScroll();
@@ -146,6 +250,7 @@ export function IssueExperience({
         className={styles.ambient}
         data-experience-ambient
         data-experience-grain
+        data-lumen-field
         aria-hidden="true"
       />
       <div className={styles.progressTrack} aria-hidden="true">
@@ -153,7 +258,7 @@ export function IssueExperience({
       </div>
 
       {showDock ? (
-        <aside className={styles.dock} aria-label="Issue chapters">
+        <aside className={styles.dock} aria-label="Issue chapters" data-lumen-active={activeId}>
           <div className={styles.dockHead}>
             <span className={styles.liveDot} data-experience-pulse aria-hidden="true" />
             <span>{issueLabel}</span>
