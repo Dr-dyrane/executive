@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Icon } from "@/components/executive/icon";
 import { IssueExperience } from "@/components/executive/issue-experience";
 import { nigeriaAngolaCorridor } from "@/content/propositions/nigeria-angola";
+import compact from "./compact.module.css";
 import styles from "./proposition.module.css";
 
 const sections = [
@@ -83,7 +84,7 @@ export default function NigeriaAngolaPropositionPage() {
   const proposition = nigeriaAngolaCorridor;
 
   return (
-    <main className={styles.page} id="main-content" tabIndex={-1} data-experience-root>
+    <main className={`${styles.page} ${compact.root}`} id="main-content" tabIndex={-1} data-experience-root>
       <IssueExperience sections={sections} issueLabel={`Proposal ${proposition.number}`} />
 
       <header className={styles.topbar}>
@@ -116,7 +117,7 @@ export default function NigeriaAngolaPropositionPage() {
               <em>×</em> Angola
             </h1>
             <p className={`${styles.heroSubtitle} font-display`}>{proposition.subtitle}.</p>
-            <p className={styles.heroSummary}>{proposition.summary}</p>
+            <p className={compact.heroSummary}>{proposition.summary}</p>
           </div>
           <CorridorField />
         </div>
@@ -125,14 +126,14 @@ export default function NigeriaAngolaPropositionPage() {
           <a href="#mandate">
             <div>
               <span>Outcome</span>
-              <strong className="font-display">30 days · 2 options</strong>
+              <strong className={`${compact.coverLine} font-display`}>30 days · 2 options</strong>
             </div>
             <Icon name="arrow" />
           </a>
           <a href="#model">
             <div>
               <span>Method</span>
-              <strong className="font-display">Need · Search · Verify · Pair</strong>
+              <strong className={`${compact.coverLine} font-display`}>Need · Search · Verify · Pair</strong>
             </div>
             <Icon name="arrow" />
           </a>
@@ -142,7 +143,7 @@ export default function NigeriaAngolaPropositionPage() {
       <section className={styles.mandate} id="mandate" aria-labelledby="mandate-title">
         <div className={styles.shell}>
           <div className={styles.sectionLabel}>Plan</div>
-          <h2 className={`${styles.displayTitle} font-display`} id="mandate-title">{proposition.mandate}</h2>
+          <h2 className={`${styles.displayTitle} ${compact.displayTitle} font-display`} id="mandate-title">{proposition.mandate}</h2>
 
           <div className={styles.mandateGrid}>
             <p className={styles.objective}>{proposition.objective}</p>
@@ -150,7 +151,7 @@ export default function NigeriaAngolaPropositionPage() {
               {proposition.specification.map(([label, value]) => (
                 <div key={label}>
                   <dt>{label}</dt>
-                  <dd className="font-display">{value}</dd>
+                  <dd className={`${compact.specValue} font-display`}>{value}</dd>
                 </div>
               ))}
             </dl>
@@ -162,7 +163,7 @@ export default function NigeriaAngolaPropositionPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeader}>
             <div className={styles.sectionLabel}>Process</div>
-            <h2 className={`${styles.sectionTitle} font-display`} id="model-title">
+            <h2 className={`${styles.sectionTitle} ${compact.sectionTitle} font-display`} id="model-title">
               Oando sets the need.<br />Dyrane builds the options.
             </h2>
           </div>
@@ -172,7 +173,7 @@ export default function NigeriaAngolaPropositionPage() {
               <div className={styles.fieldItem} key={name}>
                 <span>{role}</span>
                 <strong className="font-display">{share}</strong>
-                <b>{name}</b>
+                <b className={compact.fieldName}>{name}</b>
               </div>
             ))}
           </div>
@@ -181,8 +182,8 @@ export default function NigeriaAngolaPropositionPage() {
             {proposition.flow.map(([index, title, detail]) => (
               <div className={styles.flowStep} key={index}>
                 <span>{index}</span>
-                <h3 className="font-display">{title}</h3>
-                <p>{detail}</p>
+                <h3 className={`${compact.cardTitle} font-display`}>{title}</h3>
+                <p className={compact.cardDetail}>{detail}</p>
               </div>
             ))}
           </div>
@@ -190,7 +191,7 @@ export default function NigeriaAngolaPropositionPage() {
           <div className={styles.lanes}>
             <div className={styles.sectionLabel}>Priority services</div>
             <div className={styles.laneWords}>
-              {proposition.lanes.map((lane) => <span className="font-display" key={lane}>{lane}</span>)}
+              {proposition.lanes.map((lane) => <span className={`${compact.lane} font-display`} key={lane}>{lane}</span>)}
             </div>
           </div>
         </div>
@@ -200,7 +201,7 @@ export default function NigeriaAngolaPropositionPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeader}>
             <div className={styles.sectionLabel}>30 days</div>
-            <h2 className={`${styles.sectionTitle} font-display`} id="sprint-title">
+            <h2 className={`${styles.sectionTitle} ${compact.sectionTitle} font-display`} id="sprint-title">
               30 days.<br />Two options.
             </h2>
           </div>
@@ -210,8 +211,8 @@ export default function NigeriaAngolaPropositionPage() {
               <article className={styles.phase} key={phase.index}>
                 <div className={styles.phaseIndex}>{phase.index}</div>
                 <div className={styles.phaseDays}>{phase.days}</div>
-                <h3 className="font-display">{phase.title}</h3>
-                <p>{phase.output}</p>
+                <h3 className={`${compact.cardTitle} font-display`}>{phase.title}</h3>
+                <p className={compact.cardDetail}>{phase.output}</p>
               </article>
             ))}
           </div>
@@ -220,7 +221,7 @@ export default function NigeriaAngolaPropositionPage() {
             {proposition.scorecard.map(([value, label]) => (
               <div key={label}>
                 <strong className="font-display">{value}</strong>
-                <span>{label}</span>
+                <span className={compact.scoreLabel}>{label}</span>
               </div>
             ))}
           </div>
@@ -228,7 +229,7 @@ export default function NigeriaAngolaPropositionPage() {
           <div className={styles.governance}>
             <div>
               <div className={styles.sectionLabel}>Checks</div>
-              <h3 className="font-display">Verified.<br />Safe.<br />Capable.</h3>
+              <h3 className={`${compact.governanceTitle} font-display`}>Verified.<br />Safe.<br />Capable.</h3>
             </div>
             <ul>
               {proposition.gates.map((gate) => <li key={gate}><Icon name="check" size={18} />{gate}</li>)}
@@ -241,22 +242,22 @@ export default function NigeriaAngolaPropositionPage() {
         <div className={styles.shell}>
           <div className={styles.decisionHero}>
             <div className={styles.sectionLabel}>Decision</div>
-            <h2 className={`${styles.decisionTitle} font-display`} id="decision-title">{proposition.decision.title}</h2>
-            <p>{proposition.decision.return}</p>
+            <h2 className={`${styles.decisionTitle} ${compact.decisionTitle} font-display`} id="decision-title">{proposition.decision.title}</h2>
+            <p className={compact.decisionCopy}>{proposition.decision.return}</p>
           </div>
 
           <div className={styles.decisionGrid}>
             <div className={styles.inputs}>
               <span>From Oando</span>
-              {proposition.decision.inputs.map((input) => <strong className="font-display" key={input}>{input}</strong>)}
+              {proposition.decision.inputs.map((input) => <strong className={`${compact.input} font-display`} key={input}>{input}</strong>)}
             </div>
 
             <div className={styles.roles}>
               <span>Roles</span>
               {proposition.roles.map(([name, role]) => (
                 <div key={name}>
-                  <b>{name}</b>
-                  <small>{role}</small>
+                  <b className={compact.roleName}>{name}</b>
+                  <small className={compact.roleCopy}>{role}</small>
                 </div>
               ))}
             </div>
@@ -268,16 +269,16 @@ export default function NigeriaAngolaPropositionPage() {
               {proposition.commercial.map(([label, value]) => (
                 <div key={label}>
                   <span>{label}</span>
-                  <strong className="font-display">{value}</strong>
+                  <strong className={`${compact.fee} font-display`}>{value}</strong>
                 </div>
               ))}
             </div>
           </div>
 
           <div className={styles.guardrail}>
-            <strong className="font-display">Oando decides.</strong>
-            <strong className="font-display">Partners verified.</strong>
-            <strong className="font-display">No contracts promised.</strong>
+            <strong className={`${compact.guardrail} font-display`}>Oando decides.</strong>
+            <strong className={`${compact.guardrail} font-display`}>Partners verified.</strong>
+            <strong className={`${compact.guardrail} font-display`}>No contracts promised.</strong>
           </div>
         </div>
       </section>
@@ -286,7 +287,7 @@ export default function NigeriaAngolaPropositionPage() {
         <div className={styles.shell}>
           <div className={styles.sectionHeader}>
             <div className={styles.sectionLabel}>Sources</div>
-            <h2 className={`${styles.sectionTitle} font-display`} id="sources-title">The basis.</h2>
+            <h2 className={`${styles.sectionTitle} ${compact.sectionTitle} font-display`} id="sources-title">The basis.</h2>
           </div>
 
           <div className={styles.sourceList}>
@@ -294,8 +295,8 @@ export default function NigeriaAngolaPropositionPage() {
               <a href={source.href} target="_blank" rel="noreferrer" key={source.label}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
-                  <strong>{source.label}</strong>
-                  <small>{source.detail}</small>
+                  <strong className={compact.sourceTitle}>{source.label}</strong>
+                  <small className={compact.sourceDetail}>{source.detail}</small>
                 </div>
                 <Icon name="source" />
               </a>
