@@ -24,6 +24,34 @@
   text-wrap: balance;
 }
 
+.root [aria-label="KON 13 ownership structure"] > div:nth-child(1) strong,
+.root [aria-label="Four-step supplier process"] > div:nth-child(1) h3,
+.root [aria-label="Deliverables"] > div:nth-child(1) strong {
+  color: #72e5b7;
+  text-shadow: 0 0 26px rgba(114, 229, 183, 0.12);
+}
+
+.root [aria-label="KON 13 ownership structure"] > div:nth-child(2) strong,
+.root [aria-label="Four-step supplier process"] > div:nth-child(2) h3,
+.root [aria-label="Deliverables"] > div:nth-child(2) strong {
+  color: #f2eee6;
+}
+
+.root [aria-label="KON 13 ownership structure"] > div:nth-child(3) strong,
+.root [aria-label="Four-step supplier process"] > div:nth-child(3) h3,
+.root [aria-label="Deliverables"] > div:nth-child(3) strong {
+  color: #e3bd72;
+  text-shadow: 0 0 26px rgba(227, 189, 114, 0.12);
+}
+
+.root [aria-label="KON 13 ownership structure"] > div:nth-child(4) strong,
+.root [aria-label="Four-step supplier process"] > div:nth-child(4) h3,
+.root [aria-label="Deliverables"] > div:nth-child(4) strong,
+.root [aria-label="Deliverables"] > div:nth-child(5) strong {
+  color: #ed825c;
+  text-shadow: 0 0 26px rgba(237, 130, 92, 0.1);
+}
+
 .heroSummary {
   max-width: 560px;
   margin: 14px 0 0;
