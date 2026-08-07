@@ -22,6 +22,7 @@ const [
 ]);
 
 const semanticChapters = ["cover", "profile", "portfolio", "career", "now", "access", "linkedin", "rooms", "network", "sources"];
+const usesInkThemeColor = layout.includes('themeColor: "#010205"') || layout.includes('color: "#010205"');
 
 const checks = [
   ["lumen stylesheet is globally loaded", layout.includes('import "./lumen.css"')],
@@ -33,7 +34,7 @@ const checks = [
   ["progress light follows the current tone", experienceCss.includes("--lumen-primary") && experienceCss.includes("--lumen-secondary")],
   ["active navigation has a semantic halo", experienceCss.includes("chapterLinkActive::before") && experienceCss.includes("drop-shadow")],
   ["vivid black replaces washed gray", lumenCss.includes("--ink-void: #010205") && lumenCss.includes("linear-gradient(145deg, #03050a")],
-  ["browser chrome uses the ink token", layout.includes('color: "#010205"')],
+  ["browser chrome uses the ink token", usesInkThemeColor],
   ["glow field is localized", experienceCss.includes("width: min(58vw, 820px)") && experienceCss.includes("transparent 57%")],
   ["cover has a concentrated studio aura", lumenCss.includes("width: min(54vw, 780px)") && lumenCss.includes("coverLumen")],
   ["images preserve contrast while waking", sourceImage.includes("data-lumen-media") && lumenCss.includes("contrast(1.1)") && lumenCss.includes("lumenMediaWake")],
