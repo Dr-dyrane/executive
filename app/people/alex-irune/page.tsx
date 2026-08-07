@@ -3,6 +3,7 @@ import { IssueExperience } from "@/components/executive/issue-experience";
 import { PublicRooms } from "@/components/executive/public-rooms";
 import { SourceImage } from "@/components/executive/source-image";
 import { alexIruneEditorial } from "@/content/people/alex-irune/editorial";
+import { alexIrunePresentation } from "@/content/people/alex-irune/presentation";
 import { alexIrune } from "@/content/people/alex-irune/profile";
 import { alexIrunePublicRooms } from "@/content/people/alex-irune/public-rooms";
 import styles from "./profile.module.css";
@@ -17,7 +18,8 @@ const storyLayoutClass = {
 
 const issueSections = [
   { id: "cover", label: "Cover", icon: "compass" },
-  { id: "portfolio", label: "Portfolio", icon: "check" },
+  { id: "profile", label: "Profile", icon: "check" },
+  { id: "portfolio", label: "Portfolio", icon: "arrow" },
   { id: "career", label: "Career", icon: "arrow" },
   { id: "now", label: "Now", icon: "calendar" },
   { id: "access", label: "Access", icon: "mail" },
@@ -29,8 +31,8 @@ const issueSections = [
 export default function AlexIrunePage() {
   const profile = alexIrune;
   const editorial = alexIruneEditorial;
+  const presentation = alexIrunePresentation;
   const hero = editorial.hero;
-  const evidenceCount = profile.sources.length + alexIrunePublicRooms.length;
 
   return (
     <main
@@ -42,13 +44,11 @@ export default function AlexIrunePage() {
       <IssueExperience
         sections={issueSections}
         issueLabel={`Issue ${editorial.issue}`}
-        sourceCount={evidenceCount}
-        mediaCount={editorial.visualStories.length}
       />
 
       <header className={styles.topbar}>
         <div className={styles.topbarInner}>
-          <a className={styles.wordmark} href="/">Dyrane Executive</a>
+          <a className={styles.wordmark} href="/">{presentation.platform}</a>
           <nav className={styles.nav} aria-label="Issue navigation">
             <a href="#portfolio">Read</a>
             <a href="#access">Reach</a>
@@ -69,11 +69,10 @@ export default function AlexIrunePage() {
           eager
         />
         <div className={styles.coverShade} />
-        <div className={`${styles.coverMasthead} font-display`}>Dyrane Executive</div>
         <div className={styles.coverIssue}>
           No. {editorial.issue}<br />
           {editorial.date}<br />
-          {editorial.edition}
+          {presentation.permission}
         </div>
         <a
           className={`${styles.sourceButton} ${styles.coverSource}`}
@@ -118,12 +117,35 @@ export default function AlexIrunePage() {
         </div>
       </section>
 
-      <div className={`${styles.issueBar} ${styles.shell}`} aria-label="Issue trust signals">
-        <strong>Issue {editorial.issue}</strong>
-        <span>{evidenceCount} public evidence routes</span>
-        <span>{editorial.visualStories.length}/{editorial.visualStories.length} media positions checked</span>
-        <span>Updated {editorial.date}</span>
+      <div className={`${styles.issueBar} ${styles.shell}`} aria-label="Publication details">
+        <strong>{presentation.permission}</strong>
+        <span>{presentation.platform}</span>
+        <span>Technology · Strategy · Operatorship</span>
+        <a href={profile.social[0].href} target="_blank" rel="noreferrer">@alexirune ↗</a>
       </div>
+
+      <section className={`${styles.identity} ${styles.shell}`} id="profile" aria-labelledby="personal-title">
+        <div className={styles.identityLead}>
+          <div className={styles.sectionLabel}>Personal profile</div>
+          <h2 className="font-display" id="personal-title">The person<br />behind the title.</h2>
+        </div>
+        <div className={styles.identityGrid}>
+          {presentation.personalDetails.map((detail) => {
+            const content = (
+              <>
+                <small>{detail.label}</small>
+                <strong className="font-display">{detail.value}</strong>
+              </>
+            );
+
+            return "href" in detail ? (
+              <a href={detail.href} target="_blank" rel="noreferrer" key={detail.label}>{content}</a>
+            ) : (
+              <div key={detail.label}>{content}</div>
+            );
+          })}
+        </div>
+      </section>
 
       <section className={`${styles.opening} ${styles.shell}`} id="portfolio">
         <div className={styles.openingGrid}>
@@ -147,7 +169,7 @@ export default function AlexIrunePage() {
       <section className={`${styles.photoEssay} ${styles.shell}`} aria-labelledby="visual-title">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionLabel}>The portfolio</div>
-          <h2 className={`${styles.sectionTitle} font-display`} id="visual-title">Eight frames.<br />One operating story.</h2>
+          <h2 className={`${styles.sectionTitle} font-display`} id="visual-title">The work.<br />In frame.</h2>
         </div>
         <div className={styles.storyGrid}>
           {editorial.visualStories.map((story) => (
@@ -220,7 +242,7 @@ export default function AlexIrunePage() {
                 <h3 className="font-display">{signal.title}</h3>
               </div>
               <div className={styles.headlineFooter}>
-                <span>Public record</span>
+                <span>Record</span>
                 <a
                   className={styles.iconButton}
                   href={signal.href}
@@ -238,7 +260,7 @@ export default function AlexIrunePage() {
 
       <section className={styles.paper} id="access">
         <div className={`${styles.access} ${styles.shell}`}>
-          <div className={styles.sectionLabel}>Public access</div>
+          <div className={styles.sectionLabel}>Access</div>
           <div className={`${styles.contactWord} font-display`}>
             <a href={`mailto:${profile.contact.officialEmail}`}>{profile.contact.officialEmail}</a>
             <a href={`tel:${profile.contact.officialPhone.replace(/[^+\d]/g, "")}`}>{profile.contact.officialPhone}</a>
@@ -248,7 +270,7 @@ export default function AlexIrunePage() {
               <div className={styles.metaLabel}>Office</div>
               <p className={styles.office}>{profile.contact.office}</p>
             </div>
-            <div className={styles.quickLinks} aria-label="Public contact and social links">
+            <div className={styles.quickLinks} aria-label="Contact and social links">
               <a className={styles.quickLink} href={`mailto:${profile.contact.officialEmail}`}>
                 <Icon name="mail" /> Email
               </a>
@@ -266,7 +288,7 @@ export default function AlexIrunePage() {
               </a>
             </div>
           </div>
-          <div className={styles.calendar} aria-label="Public calendar">
+          <div className={styles.calendar} aria-label="Calendar">
             {profile.publicSchedule.map((item) => (
               <a className={styles.calendarRow} href={item.href} target="_blank" rel="noreferrer" key={`${item.date}-${item.event}`}>
                 <span>{item.date}</span>
@@ -366,7 +388,7 @@ export default function AlexIrunePage() {
       </section>
 
       <footer className={styles.footer}>
-        Dyrane Executive · Issue {editorial.issue} · Public sources only · No private contact, private location or inferred personal schedule.
+        {presentation.permission} · {presentation.platform} · Issue {editorial.issue}
       </footer>
     </main>
   );
