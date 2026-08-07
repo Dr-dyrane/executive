@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nigeria × Angola Supplier Corridor",
-  description: "A 30-day origination mandate for an ANPG-compliant Nigeria–Angola supplier corridor around Oando's KON 13 operatorship.",
+  title: "KON 13 Supplier Partnership Plan",
+  description: "A clear 30-day plan to find, verify and pair Nigerian and Angolan suppliers for Oando's KON 13 operations.",
   robots: {
     index: false,
     follow: false,
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Nigeria × Angola · The Supplier Corridor",
-    description: "Supply moves. Capability stays.",
+    title: "Nigeria × Angola · KON 13 Supplier Partnership Plan",
+    description: "Find the right suppliers before contracts are issued.",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Nigeria × Angola · The Supplier Corridor",
-    description: "A Dyrane Strategic Ventures proposition.",
+    card: "summary",
+    title: "Nigeria × Angola · KON 13 Supplier Partnership Plan",
+    description: "A clear 30-day business-development proposal from Dyrane Strategic Ventures.",
   },
 };
 
