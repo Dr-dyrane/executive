@@ -8,6 +8,7 @@ import "./experience.css";
 import "./xclusive.css";
 import "./mobile.css";
 import "./lumen.css";
+import "./hig.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
@@ -18,6 +19,16 @@ export const metadata: Metadata = {
   description: "Ainojie Alex Irune in technology, strategy and operatorship.",
   applicationName: "Dyrane Xclusive",
   category: "editorial",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Dyrane Xclusive",
+  },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
 };
 
 export const viewport: Viewport = {
