@@ -1,0 +1,54 @@
+{
+  "nog": {
+    "src": "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg",
+    "fallbackSrcs": [
+      "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/d7900c8f-e6f7-492a-8743-ea5c4d5087c0/Alex-MD.png"
+    ]
+  },
+  "portrait": {
+    "src": "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/d7900c8f-e6f7-492a-8743-ea5c4d5087c0/Alex-MD.png",
+    "fallbackSrcs": [
+      "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg"
+    ]
+  },
+  "operator": {
+    "src": "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/1398339810767-V8NQDM8MVKLOLZPRNKAI/About%2BUs_Hero_resize.jpg",
+    "fallbackSrcs": [
+      "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg"
+    ]
+  },
+  "production": {
+    "src": "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/643c7271-c450-4634-a547-68cb27001456/IMG_4272%5B87%5D.jpg",
+    "fallbackSrcs": [
+      "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/1398339810767-V8NQDM8MVKLOLZPRNKAI/About%2BUs_Hero_resize.jpg"
+    ]
+  },
+  "energyYear": {
+    "src": "https://d3jmgibn6sgz2k.cloudfront.net/wp-content/uploads/2024/01/09162331/TEY_postAinojie-Alex-IRUNE_n-1-396x300.jpg",
+    "fallbackSrcs": [
+      "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/d7900c8f-e6f7-492a-8743-ea5c4d5087c0/Alex-MD.png",
+      "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg"
+    ]
+  },
+  "gbReports": {
+    "src": "https://www.gbreports.com/photos/interview-photos/2024/cs-Oando-AinojieAlexanderIrune-headshots.jpg",
+    "fallbackSrcs": [
+      "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/d7900c8f-e6f7-492a-8743-ea5c4d5087c0/Alex-MD.png",
+      "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg"
+    ]
+  },
+  "cleanEnergy": {
+    "src": "https://www.energytimesng.com/wp-content/uploads/2023/05/Oando-LAMATA-electric-bus.jpg",
+    "fallbackSrcs": [
+      "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/1398339810767-V8NQDM8MVKLOLZPRNKAI/About%2BUs_Hero_resize.jpg",
+      "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg"
+    ]
+  },
+  "map": {
+    "src": "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/1611835651366-VGGHEVCQHAUWJ2AYJ5RW/Map%2BMain.jpg",
+    "fallbackSrcs": [
+      "https://images.squarespace-cdn.com/content/v1/5327163be4b0c0f6fcfec90e/643c7271-c450-4634-a547-68cb27001456/IMG_4272%5B87%5D.jpg",
+      "https://environmentafricamag.com/wp-content/uploads/2025/07/ALEX-NOG.jpg"
+    ]
+  }
+}
