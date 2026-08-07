@@ -3,6 +3,7 @@ import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import "./typography.css";
 import "./accessibility.css";
+import "./experience.css";
 
 const inter = Inter({
   subsets: ["latin"],
