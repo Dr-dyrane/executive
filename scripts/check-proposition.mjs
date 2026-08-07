@@ -3,10 +3,11 @@ import { readFile } from "node:fs/promises";
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-const [route, page, styles, content, layout, home] = await Promise.all([
+const [route, page, styles, compactStyles, content, layout, home] = await Promise.all([
   read("app/propositions/nigeria-angola/page.tsx"),
   read("app/propositions/nigeria-angola/proposition-page.tsx"),
   read("app/propositions/nigeria-angola/proposition.module.css"),
+  read("app/propositions/nigeria-angola/compact.module.css"),
   read("content/propositions/nigeria-angola.ts"),
   read("app/propositions/nigeria-angola/layout.tsx"),
   read("app/page.tsx"),
@@ -15,12 +16,13 @@ const [route, page, styles, content, layout, home] = await Promise.all([
 const requiredSections = ["cover", "mandate", "model", "sprint", "decision", "sources"];
 const sourceUrls = [...content.matchAll(/href:\s*"(https:\/\/[^\"]+)"/g)].map((match) => match[1]);
 const repeatedSourceUrls = sourceUrls.filter((url, index) => sourceUrls.indexOf(url) !== index);
-const forbiddenCrypticCopy = [
-  "No theatre.",
-  "Credible before visible.",
-  "Authorize 30 days.",
-  "Supply moves. Capability stays.",
-  "Built on record.",
+const coreCopy = [...content.matchAll(/(?:summary|mandate|objective|return):\s*"([^"]+)"/g)].map((match) => match[1]);
+const tooLong = coreCopy.filter((copy) => copy.trim().split(/\s+/).length > 18);
+const forbiddenVerboseCopy = [
+  "At the end of 30 days",
+  "Every company must be real, safe and able to do the work",
+  "Find the right suppliers for KON 13 before Oando awards any contracts",
+  "Business development proposal",
   "Commercial architecture",
 ];
 
@@ -32,13 +34,18 @@ const checks = [
   ["brief uses the shared issue experience", page.includes("IssueExperience") && page.includes("data-experience-root")],
   ["corridor visual is native and source-independent", page.includes("CorridorField") && page.includes("corridor-line")],
   ["cover explains the proposal in one sentence", page.includes("proposition.summary")],
-  ["30-day plan is explicit", content.includes('Duration", "30 days"') && content.includes("Week 4")],
-  ["plain four-step process is visible", ["Understand", "Find", "Check", "Present"].every((step) => content.includes(`\"${step}\"`))],
+  ["core copy stays under eighteen words", coreCopy.length === 4 && tooLong.length === 0],
+  ["30-day plan is explicit", content.includes('Time", "30 days"') && content.includes("Week 4")],
+  ["four-step process is concise", ["Need", "Search", "Verify", "Pair"].every((step) => content.includes(`\"${step}\"`))],
   ["acceptance criteria are measurable", ["20", "6", "3", "2", "1"].every((value) => content.includes(`[\"${value}\"`))],
-  ["procurement guardrails are clear", page.includes("Oando keeps procurement control") && page.includes("No supplier is promised a contract")],
-  ["the decision is explicit", content.includes("Approve a 30-day pilot")],
+  ["procurement guardrails are clear", page.includes("Oando decides") && page.includes("No contracts promised")],
+  ["the decision is explicit", content.includes("Approve 30 days")],
   ["source ledger has four unique links", sourceUrls.length === 4 && repeatedSourceUrls.length === 0],
-  ["cryptic strategy copy is absent", forbiddenCrypticCopy.every((copy) => !page.includes(copy) && !content.includes(copy))],
+  ["verbose copy is absent", forbiddenVerboseCopy.every((copy) => !page.includes(copy) && !content.includes(copy))],
+  ["inline copy styling is removed", !page.includes("style={{")],
+  ["overflow wrapping is enforced", compactStyles.includes("overflow-wrap: anywhere") && compactStyles.includes("min-width: 0")],
+  ["editorial headings balance safely", compactStyles.includes("text-wrap: balance")],
+  ["phone type scale is constrained", compactStyles.includes("@media (max-width: 560px)") && compactStyles.includes("decisionTitle")],
   ["mobile breakpoint exists", styles.includes("@media (max-width: 900px)")],
   ["tablet breakpoint exists", styles.includes("@media (max-width: 1120px)")],
   ["landscape phone layout exists", styles.includes("orientation: landscape")],
