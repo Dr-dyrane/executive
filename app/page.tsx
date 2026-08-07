@@ -1,16 +1,32 @@
 import Link from "next/link";
 import { Icon } from "@/components/executive/icon";
+import { IssueExperience } from "@/components/executive/issue-experience";
 import { SourceImage } from "@/components/executive/source-image";
 import { alexIruneEditorial } from "@/content/people/alex-irune/editorial";
 import styles from "./home.module.css";
+
+const coverSections = [{ id: "cover", label: "Cover", icon: "compass" }] as const;
 
 export default function HomePage() {
   const editorial = alexIruneEditorial;
   const hero = editorial.hero;
 
   return (
-    <main className={styles.page}>
-      <section className={styles.cover} aria-labelledby="issue-title">
+    <main
+      className={styles.page}
+      id="main-content"
+      tabIndex={-1}
+      data-experience-root
+    >
+      <IssueExperience
+        sections={coverSections}
+        issueLabel={`Issue ${editorial.issue}`}
+        sourceCount={editorial.coverLines.length + 1}
+        mediaCount={editorial.visualStories.length}
+        showDock={false}
+      />
+
+      <section className={styles.cover} id="cover" aria-labelledby="issue-title">
         <SourceImage
           src={hero.src}
           fallbackSrcs={hero.fallbackSrcs}
@@ -60,7 +76,7 @@ export default function HomePage() {
       </section>
       <footer className={styles.footer}>
         <strong>Issue 001 is live</strong>
-        <span>People · work · institutions · public record</span>
+        <span>{editorial.visualStories.length} verified visual positions</span>
         <span>Open the cover →</span>
       </footer>
     </main>
