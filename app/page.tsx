@@ -76,7 +76,7 @@ export default function HomePage() {
       <footer className={styles.footer}>
         <strong>{presentation.platform}</strong>
         <span>{presentation.permission}</span>
-        <span>Open cover →</span>
+        <Link href="/propositions/nigeria-angola">Strategic proposition →</Link>
       </footer>
     </main>
   );
