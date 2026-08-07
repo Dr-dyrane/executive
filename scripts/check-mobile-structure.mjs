@@ -12,6 +12,8 @@ const [
   publicRooms,
   mobilePortal,
   issueExperience,
+  linkedinPulse,
+  linkedinCss,
 ] = await Promise.all([
   read("app/mobile.css"),
   read("app/layout.tsx"),
@@ -21,6 +23,8 @@ const [
   read("components/executive/public-rooms.tsx"),
   read("components/executive/mobile-access-portal.tsx"),
   read("components/executive/issue-experience.tsx"),
+  read("components/executive/linkedin-pulse.tsx"),
+  read("components/executive/linkedin-signal.module.css"),
 ]);
 
 const profileAnchors = ["profile", "portfolio", "career", "now", "access", "network", "sources"];
@@ -38,7 +42,9 @@ const checks = [
   ["portfolio imagery uses a touch reel", mobileCss.includes('section[aria-labelledby="visual-title"]')],
   ["current headlines use a touch reel", mobileCss.includes("#now > div:last-child")],
   ["public rooms use a touch reel", mobileCss.includes("#rooms > div > div")],
-  ["LinkedIn is restructured for touch", mobileCss.includes('section[aria-labelledby="linkedin-pulse-title"]')],
+  ["LinkedIn signal has a unique landmark", linkedinPulse.includes('linkedin-signal-title')],
+  ["LinkedIn signal becomes a snap reel", linkedinCss.includes("@media (max-width: 900px)") && linkedinCss.includes("scroll-snap-type: x mandatory")],
+  ["LinkedIn signal handles coarse pointers", linkedinCss.includes("pointer: coarse")],
   ["chapter dock remains labelled", issueExperience.includes('aria-label="Issue chapters"')],
   ["interactive targets are at least 44px", /min-height:\s*(4[4-9]|5\d|6\d)px/.test(mobileCss)],
   ["quick access portal exists", mobilePortal.includes('aria-label="Quick access"')],
