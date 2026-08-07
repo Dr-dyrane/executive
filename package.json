@@ -11,7 +11,8 @@
     "check:lumen": "node scripts/check-lumen.mjs",
     "check:proposition": "node scripts/check-proposition.mjs",
     "check:ventures": "node scripts/check-ventures.mjs",
-    "check": "npm run check:experience && npm run check:mobile && npm run check:linkedin && npm run check:lumen && npm run check:proposition && npm run check:ventures && npm run check:images",
+    "check:hig": "node scripts/check-hig.mjs",
+    "check": "npm run check:experience && npm run check:mobile && npm run check:linkedin && npm run check:lumen && npm run check:proposition && npm run check:ventures && npm run check:hig && npm run check:images",
     "build": "npm run check && next build",
     "start": "next start",
     "lint": "next lint"
