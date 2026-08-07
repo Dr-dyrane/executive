@@ -41,8 +41,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${dmSans.variable} ${inter.className}`}>{children}</body>
+    <html lang="en" data-appearance="dark">
+      <body
+        className={`${inter.variable} ${dmSans.variable} ${inter.className}`}
+        data-design-system="dyrane-hig"
+      >
+        {children}
+      </body>
     </html>
   );
 }
