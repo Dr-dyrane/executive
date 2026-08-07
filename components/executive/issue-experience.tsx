@@ -70,6 +70,13 @@ const LUMEN_TONES: Record<string, LumenTone> = {
     originY: "40%",
     alpha: "0.17",
   },
+  linkedin: {
+    primary: "102 190 255",
+    secondary: "157 120 255",
+    originX: "72%",
+    originY: "34%",
+    alpha: "0.2",
+  },
   rooms: {
     primary: "232 168 92",
     secondary: "133 84 47",
@@ -191,10 +198,7 @@ export function IssueExperience({
   }, [calm]);
 
   useEffect(() => {
-    const targets = sections
-      .map((section) => document.getElementById(section.id))
-      .filter((element): element is HTMLElement => Boolean(element));
-
+    const observed = new Set<HTMLElement>();
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -206,8 +210,23 @@ export function IssueExperience({
       { rootMargin: "-20% 0px -58%", threshold: [0.08, 0.2, 0.45, 0.7] },
     );
 
-    targets.forEach((target) => observer.observe(target));
-    return () => observer.disconnect();
+    const observeAvailableSections = () => {
+      sections.forEach((section) => {
+        const target = document.getElementById(section.id);
+        if (!(target instanceof HTMLElement) || observed.has(target)) return;
+        observed.add(target);
+        observer.observe(target);
+      });
+    };
+
+    observeAvailableSections();
+    const mutationObserver = new MutationObserver(observeAvailableSections);
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      mutationObserver.disconnect();
+      observer.disconnect();
+    };
   }, [sections]);
 
   useEffect(() => {
